@@ -227,6 +227,7 @@ input, textarea, select {
   max-width: 600px;
   margin: 0 auto;
   line-height: var(--leading-relaxed);
+  word-break: keep-all;
 }
 
 /* ─── CTA Buttons ─── */

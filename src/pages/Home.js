@@ -180,7 +180,7 @@ export async function renderHome() {
           <div class="section-header text-center reveal">
             <span class="section-label">TODAY'S GOLDEN PLATE</span>
             <h2 class="section-title">실시간 인기 메뉴 Top 10</h2>
-            <p class="section-subtitle">지금 이 순간, 스시초이스 골든 레일 위에서 가장 많은 사랑을 받고 있는 10대 인기 스시입니다.</p>
+            <p class="section-subtitle">지금 이 순간, 스시초이스 골든 레일 위에서 가장 많은 사랑을 받고 있는<br>10대 인기 스시입니다.</p>
             <div class="divider-gold divider-gold--center"></div>
           </div>
 
