@@ -156,7 +156,7 @@ export async function renderHome() {
             <div class="why-card gold-frame">
               <span class="why-card__num text-en">03</span>
               <h3>Value (합리적 가치)</h3>
-              <p>부담 없는 균일가 요금제를 기반으로 오마카세 수준의 최상급 신동진 쌀, 천연 발효 식초만을 활용해 격조 높은 미식을 선사합니다.</p>
+              <p>부담 없는 균일가 요금제를 기반으로 최상급 하이엔드 신동진 쌀, 천연 발효 식초만을 활용해 격조 높은 미식을 선사합니다.</p>
             </div>
             <!-- Card 4 -->
             <div class="why-card gold-frame">
@@ -420,8 +420,12 @@ function initHomeInteractivity() {
   const steps = document.querySelectorAll('.rotary-step-item');
   const visuals = document.querySelectorAll('.visual-panel');
 
+  let currentStepIndex = 0;
+
   steps.forEach((step, index) => {
     step.addEventListener('click', () => {
+      currentStepIndex = index; // Synchronize index when user clicks manually
+      
       // Toggle Active Step text
       steps.forEach(s => s.classList.remove('active'));
       step.classList.add('active');
@@ -433,16 +437,15 @@ function initHomeInteractivity() {
     });
   });
 
-  // Automatically cycle Section 02 steps every 7 seconds unless hovered
+  // Automatically cycle Section 02 steps every 1 second unless hovered (desktop only)
   let stepCycleInterval;
-  let currentStepIndex = 0;
   const stepsContainer = document.querySelector('.rotary-steps-container');
 
   function startStepCycle() {
     stepCycleInterval = setInterval(() => {
       currentStepIndex = (currentStepIndex + 1) % 4;
       steps[currentStepIndex].click();
-    }, 7000);
+    }, 1000);
   }
 
   function stopStepCycle() {
@@ -451,8 +454,13 @@ function initHomeInteractivity() {
 
   if (stepsContainer && steps.length > 0) {
     startStepCycle();
-    stepsContainer.addEventListener('mouseenter', stopStepCycle);
-    stepsContainer.addEventListener('mouseleave', startStepCycle);
+    // Only register mouse enter/leave triggers on devices that support true hover
+    // to prevent mobile/touch sticky hover states from pausing the cycle.
+    const supportsHover = window.matchMedia('(hover: hover)').matches;
+    if (supportsHover) {
+      stepsContainer.addEventListener('mouseenter', stopStepCycle);
+      stepsContainer.addEventListener('mouseleave', startStepCycle);
+    }
   }
 
   // 2. Split Pinned Scroll Interactivity for Section 06 (Chef's Craft)
@@ -529,9 +537,11 @@ function initHomeInteractivity() {
   }, 1000);
 
   // Clean scroll listener on route navigation
-  window.addEventListener('pageLoaded', function cleanup() {
-    window.removeEventListener('scroll', handleChefScrollSpy);
-    stopStepCycle();
-    window.removeEventListener('pageLoaded', cleanup);
+  window.addEventListener('pageLoaded', function cleanup(e) {
+    if (e.detail && e.detail.path !== '/') {
+      window.removeEventListener('scroll', handleChefScrollSpy);
+      stopStepCycle();
+      window.removeEventListener('pageLoaded', cleanup);
+    }
   });
 }
