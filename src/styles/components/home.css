@@ -253,7 +253,7 @@
 /* ─── Section 03: Why Grid ─── */
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--space-md);
   margin-top: var(--space-xl);
 }
@@ -679,7 +679,7 @@
 /* ─── Section 07: Stores Preview Grid ─── */
 .store-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-lg);
   margin-top: var(--space-xl);
 }
@@ -798,22 +798,19 @@
    Home Page Responsive Queries
    ============================================ */
 
+/* ============================================
+   Home Page Responsive Queries (Breakpoints: 1024px, 768px, 480px)
+   ============================================ */
+
+/* ─── Medium Screens (1024px or less) ─── */
 @media (max-width: 1024px) {
   .rotary-steps-container {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
   }
 
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .why-card:last-child {
-    grid-column: 1 / -1;
-  }
-
   .sig-slide {
-    height: 75vh;
+    height: 70vh;
   }
 
   .chef-craft-layout {
@@ -826,7 +823,7 @@
     top: 0;
     width: 100%;
     aspect-ratio: 3/4;
-    max-height: 70vh;
+    max-height: 60vh;
   }
 
   .chef-craft__sticky-visual.fit-philosophy {
@@ -836,23 +833,31 @@
   }
 
   .chef-craft__scroll-text {
-    gap: var(--space-4xl);
+    gap: var(--space-3xl);
     padding-bottom: 0;
   }
 
   .chef-text-block {
     opacity: 1;
   }
-
-  .store-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
-@media (max-width: 767px) {
+/* ─── Tablet Screens (768px or less) ─── */
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: calc(var(--header-height) + var(--space-xl));
+    padding-bottom: var(--space-2xl);
+    min-height: 80vh;
+  }
+
   .hero-ctas {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
+    gap: var(--space-sm);
+  }
+
+  .hero-ctas .btn {
     width: 100%;
   }
 
@@ -860,19 +865,64 @@
     font-size: var(--text-4xl);
   }
 
-  .why-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .why-card:last-child {
-    grid-column: auto;
-  }
-
   .sig-slide h2 {
     font-size: var(--text-3xl);
   }
+  
+  .temp-indicator-badge {
+    padding: 8px 16px;
+    bottom: var(--space-md);
+    right: var(--space-md);
+  }
+}
 
-  .store-grid {
+/* ─── Mobile Screens (480px or less) ─── */
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + var(--space-lg));
+    padding-bottom: var(--space-xl);
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .hero-desc {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-xl);
+  }
+
+  .why-grid, .store-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sig-slide {
+    height: auto;
+    padding: var(--space-3xl) 0;
+  }
+
+  .sig-slide h2 {
+    font-size: var(--text-2xl);
+  }
+
+  .sig-slide__tagline {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-md);
+  }
+
+  .conveyor-plate {
+    width: 200px;
+  }
+
+  .plate-ring {
+    width: 160px;
+    height: 160px;
+  }
+
+  .plate-rank {
+    width: 32px;
+    height: 32px;
+    font-size: var(--text-xs);
   }
 }

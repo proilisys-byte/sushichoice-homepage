@@ -1023,7 +1023,7 @@
 
 .advantages-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-xl);
   margin-top: var(--space-2xl);
 }
@@ -1060,7 +1060,7 @@
 
 .process-timeline {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-2xl) var(--space-xl);
   margin-top: var(--space-3xl);
   position: relative;
@@ -1224,7 +1224,7 @@
 
 .benefits-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-2xl);
   margin-top: var(--space-2xl);
 }
@@ -1312,7 +1312,7 @@
 /* ─── Reviews Page ─── */
 .review-dashboard {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--space-xl);
   background-color: var(--color-card);
   padding: var(--space-3xl);
@@ -1604,7 +1604,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .brand-hero__title {
     font-size: var(--text-2xl);
   }

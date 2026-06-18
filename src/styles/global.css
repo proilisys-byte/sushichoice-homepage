@@ -345,7 +345,15 @@ input, textarea, select {
 }
 
 /* ─── Responsive ─── */
-@media (max-width: 767px) {
+/* ─── Medium Screens (1024px or less) ─── */
+@media (max-width: 1024px) {
+  .section {
+    padding: var(--space-4xl) 0;
+  }
+}
+
+/* ─── Tablet Screens (768px or less) ─── */
+@media (max-width: 768px) {
   :root {
     --header-height: 64px;
   }
@@ -365,9 +373,15 @@ input, textarea, select {
   }
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
+/* ─── Mobile Screens (480px or less) ─── */
+@media (max-width: 480px) {
   .section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-2xl) 0;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: var(--text-xs);
   }
 }
 
