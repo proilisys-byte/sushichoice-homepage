@@ -216,7 +216,9 @@
 }
 
 .rotary-step-item p {
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
   display: none;
   animation: slideDown var(--duration-normal) var(--ease-out);
 }

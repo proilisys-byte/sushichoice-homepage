@@ -54,7 +54,7 @@ export async function renderHome() {
         <div class="hero-content container reveal">
           <span class="hero-subtitle text-en">OUR STORY</span>
           <h1 class="hero-title">내 가족이 먹는다는 마음으로,<br/>신선함과 정성을 매일 담습니다.</h1>
-          <p class="hero-desc">대한민국 프리미엄 회전초밥의 기준, 스시초이스의 시작과 신념</p>
+          <p class="hero-desc">대한민국 프리미엄 회전초밥의 기준,<br/>스시초이스의 시작과 신념</p>
           
           <div class="hero-ctas">
             <a href="/store" class="btn btn--primary" data-link>매장 찾기</a>
@@ -377,7 +377,7 @@ export async function renderHome() {
                       <span class="rev-source ${bClass}">${badge}</span>
                     </div>
                     <div class="rev-stars" style="margin-bottom: var(--space-sm);">${stars}</div>
-                    <p style="font-size: var(--text-sm); line-height: 1.6; font-style: italic; color: #333;">"${rev.text}"</p>
+                    <p style="font-size: var(--text-base); line-height: 1.7; font-style: italic; color: #333; word-break: keep-all;">"${rev.text}"</p>
                   </div>
                 `;
   }).join('')}

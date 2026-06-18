@@ -44,6 +44,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   color: var(--color-secondary);
+  word-break: keep-all;
 }
 
 h1 { font-size: var(--text-hero); }
@@ -57,6 +58,7 @@ p {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   color: var(--color-text-muted);
+  word-break: keep-all;
 }
 
 a {
@@ -382,6 +384,18 @@ input, textarea, select {
   .btn {
     padding: 10px 20px;
     font-size: var(--text-xs);
+  }
+
+  .section-title {
+    font-size: var(--text-4xl);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-base);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-2xl);
   }
 }
 
