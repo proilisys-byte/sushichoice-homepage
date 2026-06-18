@@ -454,13 +454,6 @@ function initHomeInteractivity() {
 
   if (stepsContainer && steps.length > 0) {
     startStepCycle();
-    // Only register mouse enter/leave triggers on devices that support true hover
-    // to prevent mobile/touch sticky hover states from pausing the cycle.
-    const supportsHover = window.matchMedia('(hover: hover)').matches;
-    if (supportsHover) {
-      stepsContainer.addEventListener('mouseenter', stopStepCycle);
-      stepsContainer.addEventListener('mouseleave', startStepCycle);
-    }
   }
 
   // 2. Split Pinned Scroll Interactivity for Section 06 (Chef's Craft)
