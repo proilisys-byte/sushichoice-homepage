@@ -43,8 +43,8 @@ export function renderFooter() {
             <ul>
               <li><a href="/menu" class="footer__link" data-link>미식 메뉴판</a></li>
               <li><a href="/store" class="footer__link" data-link>전체 매장 안내</a></li>
-              <li><a href="/store/songnae" class="footer__link" data-link>송내본점</a></li>
-              <li><a href="/store/songdo" class="footer__link" data-link>송도점</a></li>
+              <li><a href="/store?id=songnae" class="footer__link" data-link>송내본점</a></li>
+              <li><a href="/store?id=songdo" class="footer__link" data-link>송도점</a></li>
             </ul>
           </div>
           <div class="footer__col">

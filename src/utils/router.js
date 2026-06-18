@@ -29,24 +29,19 @@ export async function navigateTo(path) {
  * Includes page transitions.
  */
 async function handleRouting(path = window.location.pathname) {
-  // Normalize path
-  let currentPath = path.toLowerCase();
+  // Normalize path by stripping query parameters and hashes for matching
+  let lookupPath = path.split('?')[0].split('#')[0].toLowerCase();
   
   // Clean trailing slash unless it is root
-  if (currentPath.length > 1 && currentPath.endsWith('/')) {
-    currentPath = currentPath.slice(0, -1);
+  if (lookupPath.length > 1 && lookupPath.endsWith('/')) {
+    lookupPath = lookupPath.slice(0, -1);
   }
 
   // Find matching route or fallback to Home (/) or 404
-  let component = routes[currentPath];
+  let component = routes[lookupPath];
   
-  // If not found, check if it fits a store dynamic route: /store/:id
   if (!component) {
-    if (currentPath.startsWith('/store/') && currentPath.length > 7) {
-      component = routes['/store/:id'];
-    } else {
-      component = routes['/'] || (() => '<h2>Page Not Found</h2>');
-    }
+    component = routes['/'] || (() => '<h2>Page Not Found</h2>');
   }
 
   // Trigger page transition curtain overlay
@@ -74,7 +69,7 @@ async function handleRouting(path = window.location.pathname) {
 
   // Dynamic SEO Updates (will be imported dynamically or globally)
   if (window.updateSEO) {
-    window.updateSEO(currentPath);
+    window.updateSEO(lookupPath);
   }
 
   // Scroll to top

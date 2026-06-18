@@ -24,7 +24,6 @@ import { renderHome } from './pages/Home.js';
 import { renderBrand } from './pages/Brand.js';
 import { renderMenu } from './pages/Menu.js';
 import { renderStore } from './pages/Store.js';
-import { renderStoreDetail } from './pages/StoreDetail.js';
 import { renderFranchise } from './pages/Franchise.js';
 import { renderCareers } from './pages/Careers.js';
 import { renderReview } from './pages/Review.js';
@@ -37,13 +36,6 @@ addRoute('/', renderHome);
 addRoute('/brand', renderBrand);
 addRoute('/menu', renderMenu);
 addRoute('/store', renderStore);
-
-// Store Local SEO Landing Pages
-addRoute('/store/:id', renderStoreDetail);
-addRoute('/store/songnae', renderStoreDetail);
-addRoute('/store/eungye', renderStoreDetail);
-addRoute('/store/songdo', renderStoreDetail);
-addRoute('/store/incheon', renderStoreDetail);
 
 // Business & Partnership Pages
 addRoute('/franchise', renderFranchise);

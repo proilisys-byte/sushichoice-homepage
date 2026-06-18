@@ -339,7 +339,7 @@ export async function renderHome() {
                     <span>🚗 무료 주차 가능</span>
                   </div>
                   <div class="home-store-card__actions">
-                    <a href="/store/${store.id}" class="btn btn--secondary btn--large" data-link>매장 상세 가이드</a>
+                    <a href="/store?id=${store.id}" class="btn btn--secondary btn--large" data-link>매장 상세 가이드</a>
                   </div>
                 </div>
               </div>
