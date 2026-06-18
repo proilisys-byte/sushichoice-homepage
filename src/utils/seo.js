@@ -1,4 +1,9 @@
 // Dynamic SEO/GEO & JSON-LD Schema Controller for SUSHI CHOICE
+import logoImg from '../assets/images/brand/logo.png';
+import songnaeExt from '../assets/images/store/store-songnae-ext.jpg';
+import eungyeExt from '../assets/images/store/store-eungye-ext.jpg';
+import songdoExt from '../assets/images/store/store-songdo-ext.jpg';
+import incheonExt from '../assets/images/store/store-incheon-ext.jpg';
 
 const DEFAULT_TITLE = '스시초이스 | Premium Rotary Sushi Experience';
 const DEFAULT_DESC = '움직이는 예술, 장인의 온도. 대한민국 프리미엄 회전초밥 브랜드 스시초이스(SUSHI CHOICE). 신선한 재료와 15년 경력 장인의 36.5°C 정성을 담은 미식 경험을 제공합니다.';
@@ -14,7 +19,7 @@ const SEO_DATA = {
         '@context': 'https://schema.org',
         '@type': 'Restaurant',
         'name': '스시초이스 송내본점',
-        'image': 'https://sushichoice.co.kr/src/assets/images/brand/logo.png',
+        'image': `https://sushichoice.co.kr${logoImg}`,
         'url': 'https://sushichoice.co.kr',
         'telephone': '0507-1436-9955',
         'priceRange': '$$',
@@ -42,7 +47,7 @@ const SEO_DATA = {
         '@type': 'Organization',
         'name': '스시초이스',
         'url': 'https://sushichoice.co.kr',
-        'logo': 'https://sushichoice.co.kr/src/assets/images/brand/logo.png',
+        'logo': `https://sushichoice.co.kr${logoImg}`,
         'contactPoint': {
           '@type': 'ContactPoint',
           'telephone': '0507-1436-9955',
@@ -123,7 +128,7 @@ const SEO_DATA = {
         '@context': 'https://schema.org',
         '@type': 'Restaurant',
         'name': '스시초이스 송내본점',
-        'image': 'https://sushichoice.co.kr/src/assets/images/store/store-songnae-ext.jpg',
+        'image': `https://sushichoice.co.kr${songnaeExt}`,
         'telephone': '0507-1436-9955',
         'url': 'https://sushichoice.co.kr/store/songnae',
         'address': {
@@ -148,7 +153,7 @@ const SEO_DATA = {
         '@context': 'https://schema.org',
         '@type': 'Restaurant',
         'name': '스시초이스 시흥은계점',
-        'image': 'https://sushichoice.co.kr/src/assets/images/store/store-eungye-ext.jpg',
+        'image': `https://sushichoice.co.kr${eungyeExt}`,
         'telephone': '031-311-6616',
         'url': 'https://sushichoice.co.kr/store/eungye',
         'address': {
@@ -173,7 +178,7 @@ const SEO_DATA = {
         '@context': 'https://schema.org',
         '@type': 'Restaurant',
         'name': '스시초이스 송도점',
-        'image': 'https://sushichoice.co.kr/src/assets/images/store/store-songdo-ext.jpg',
+        'image': `https://sushichoice.co.kr${songdoExt}`,
         'telephone': '032-832-8318',
         'url': 'https://sushichoice.co.kr/store/songdo',
         'address': {
@@ -198,7 +203,7 @@ const SEO_DATA = {
         '@context': 'https://schema.org',
         '@type': 'Restaurant',
         'name': '스시초이스 인천서구점',
-        'image': 'https://sushichoice.co.kr/src/assets/images/store/store-incheon-ext.jpg',
+        'image': `https://sushichoice.co.kr${incheonExt}`,
         'telephone': '032-562-1028',
         'url': 'https://sushichoice.co.kr/store/incheon',
         'address': {
