@@ -138,7 +138,7 @@ function initMenuInteractivity() {
     modalBody.innerHTML = `
       <div class="modal-detail">
         <div class="modal-detail__image">
-          <img src="${item.image}" alt="${item.name}" />
+          <img src="${item.image}" alt="${item.name}" loading="lazy" />
         </div>
         <div class="modal-detail__info">
           <span class="modal-detail__category text-en">${item.category.toUpperCase()}</span>

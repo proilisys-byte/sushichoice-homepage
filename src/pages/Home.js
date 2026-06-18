@@ -90,13 +90,13 @@ export async function renderHome() {
                 <video src="${rotaryVideo}" autoplay loop muted playsinline class="rotary-video"></video>
               </div>
               <div class="visual-panel" id="rot-vis-2">
-                <img src="${rotaryChoose}" alt="고르다" />
+                <img src="${rotaryChoose}" alt="고르다" loading="lazy" />
               </div>
               <div class="visual-panel" id="rot-vis-3">
-                <img src="${chefKnife}" alt="주문하다" />
+                <img src="${chefKnife}" alt="주문하다" loading="lazy" />
               </div>
               <div class="visual-panel" id="rot-vis-4">
-                <img src="${rotaryEnjoy}" alt="즐기다" />
+                <img src="${rotaryEnjoy}" alt="즐기다" loading="lazy" />
               </div>
             </div>
 
@@ -191,7 +191,7 @@ export async function renderHome() {
               ${[...top10Menu, ...top10Menu].map((item, idx) => `
                 <div class="conveyor-plate">
                   <div class="plate-ring">
-                    <img src="${item.image}" alt="${item.name}" class="plate-sushi-img" />
+                    <img src="${item.image}" alt="${item.name}" class="plate-sushi-img" loading="lazy" />
                     <span class="plate-rank text-en">${((idx) % 10) + 1}</span>
                   </div>
                   <div class="plate-info">
@@ -272,9 +272,9 @@ export async function renderHome() {
           <div class="chef-craft-layout">
             <!-- Left Side Pinned Image Frame -->
             <div class="chef-craft__sticky-visual gold-frame reveal">
-              <img src="${chefCraftNew}" alt="쉐프의 철학" class="chef-visual-img chef-visual-img--philosophy active" id="chef-img-1" />
-              <img src="${chefCraftNew}" alt="칼의 각도" class="chef-visual-img chef-visual-img--philosophy" id="chef-img-2" />
-              <img src="${chefCraftNew}" alt="쌀의 고집" class="chef-visual-img chef-visual-img--philosophy" id="chef-img-3" />
+              <img src="${chefCraftNew}" alt="쉐프의 철학" class="chef-visual-img chef-visual-img--philosophy active" id="chef-img-1" loading="lazy" />
+              <img src="${chefCraftNew}" alt="칼의 각도" class="chef-visual-img chef-visual-img--philosophy" id="chef-img-2" loading="lazy" />
+              <img src="${chefCraftNew}" alt="쌀의 고집" class="chef-visual-img chef-visual-img--philosophy" id="chef-img-3" loading="lazy" />
               
               <!-- Dynamic Temperature Counter Overlay -->
               <div class="temp-indicator-badge">
@@ -329,7 +329,7 @@ export async function renderHome() {
             ${storeData.map(store => `
               <div class="home-store-card gold-frame">
                 <div class="home-store-card__img-wrapper">
-                  <img src="${store.imageLoc}" alt="${store.name} 위치" />
+                  <img src="${store.imageLoc}" alt="${store.name} 위치" loading="lazy" />
                 </div>
                 <div class="home-store-card__info">
                   <h3>${store.name}</h3>

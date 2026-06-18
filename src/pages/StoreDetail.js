@@ -101,7 +101,7 @@ export async function renderStoreDetail() {
             <!-- Static Map Box -->
             <div class="store-detail-map gold-frame reveal">
               <a href="${store.mapUrl}" target="_blank" title="네이버 지도로 보기">
-                <img src="${store.imageMap}" alt="${store.name} 찾아오시는 길 약도" />
+                <img src="${store.imageMap}" alt="${store.name} 찾아오시는 길 약도" loading="lazy" />
                 <div class="map-link-overlay">
                   <span>큰 지도로 보기 (네이버 지도 이동)</span>
                 </div>
@@ -116,7 +116,7 @@ export async function renderStoreDetail() {
         <div class="container">
           <div class="store-interior reveal">
             <div class="store-interior__image gold-frame">
-              <img src="${store.imageInt}" alt="${store.name} 실내 인테리어" />
+              <img src="${store.imageInt}" alt="${store.name} 실내 인테리어" loading="lazy" />
             </div>
             <div class="store-interior__text">
               <span class="detail-section-label">INTERIOR AESTHETICS</span>

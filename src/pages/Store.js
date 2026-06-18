@@ -37,7 +37,7 @@ export async function renderStore() {
                 ${storeData.map((store, index) => `
                   <div class="store-panel ${index === 0 ? 'active' : ''}" id="panel-${store.id}">
                     <div class="store-panel__img-wrapper gold-frame">
-                      <img src="${store.imageExt}" alt="${store.name} 전경" class="store-panel__img" />
+                      <img src="${store.imageExt}" alt="${store.name} 전경" class="store-panel__img" loading="lazy" />
                     </div>
                     
                     <div class="store-panel__info">
@@ -84,7 +84,7 @@ export async function renderStore() {
             <div class="store-locator__map gold-frame">
               <div class="map-container">
                 ${storeData.map((store, index) => `
-                  <img src="${store.imageMap}" alt="${store.name} 약도" class="store-map-img ${index === 0 ? 'active' : ''}" id="map-${store.id}" />
+                  <img src="${store.imageMap}" alt="${store.name} 약도" class="store-map-img ${index === 0 ? 'active' : ''}" id="map-${store.id}" loading="lazy" />
                 `).join('')}
                 <div class="map-overlay-info">
                   <span>지도를 누르시면 길찾기 링크로 새 창이 열립니다.</span>

@@ -11,7 +11,7 @@ export function renderFooter() {
       <div class="footer__top">
         <!-- Brand Section -->
         <div class="footer__brand">
-          <img src="${logoImg}" alt="SUSHI CHOICE" class="footer__logo" />
+          <img src="${logoImg}" alt="SUSHI CHOICE" class="footer__logo" loading="lazy" />
           <p class="footer__slogan">움직이는 예술, 장인의 온도</p>
           <p class="footer__promise">신선함은 돌고, 만족은 남습니다.</p>
           <div class="footer__socials">
