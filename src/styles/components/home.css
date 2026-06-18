@@ -1,0 +1,878 @@
+/* ============================================
+   SUSHI CHOICE — Home Page Stylesheet
+   ============================================ */
+
+/* ─── Section 01: Hero ─── */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--color-primary);
+  padding-top: calc(var(--header-height) + var(--space-2xl));
+  padding-bottom: var(--space-3xl);
+}
+
+.hero-video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom,
+      rgba(11, 11, 11, 0.4) 0%,
+      rgba(11, 11, 11, 0.7) 100%);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: var(--max-width);
+  padding-top: 0;
+}
+
+.hero-subtitle {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  margin-bottom: var(--space-md);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-title {
+  font-family: var(--font-kr);
+  font-size: var(--text-hero);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-snug);
+  color: var(--color-secondary);
+  margin-bottom: var(--space-lg);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-desc {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin-bottom: var(--space-2xl);
+  line-height: var(--leading-relaxed);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+/* Scroll indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 10px;
+  letter-spacing: var(--tracking-widest);
+}
+
+.indicator-rail {
+  width: 2px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  position: relative;
+  overflow: hidden;
+}
+
+.indicator-plate {
+  width: 100%;
+  height: 12px;
+  background-color: var(--color-gold);
+  border-radius: var(--radius-full);
+  position: absolute;
+  top: 0;
+  animation: scroll-slide 2s infinite ease-in-out;
+}
+
+@keyframes scroll-slide {
+  0% {
+    top: -12px;
+  }
+
+  100% {
+    top: 40px;
+  }
+}
+
+/* ─── Section 02: Rotary Experience ─── */
+.rotary-steps-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+  margin-top: var(--space-2xl);
+}
+
+.rotary-steps__visual {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  background-color: var(--color-card);
+}
+
+.visual-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  z-index: 1;
+}
+
+.visual-panel.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.visual-panel video,
+.visual-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 02 고르다 — 이미지 10% 축소 + 음식 중앙 배치 */
+#rot-vis-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#rot-vis-2 img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: var(--radius-sm);
+}
+
+.rotary-steps__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.rotary-step-item {
+  position: relative;
+  padding-left: var(--space-2xl);
+  border-left: 2px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: border-color var(--transition-base), padding-left var(--transition-base);
+}
+
+.step-num {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-muted);
+  display: block;
+  margin-bottom: 2px;
+  transition: color var(--transition-base);
+}
+
+.rotary-step-item h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-muted);
+  transition: color var(--transition-base);
+}
+
+.rotary-step-item p {
+  font-size: var(--text-sm);
+  display: none;
+  animation: slideDown var(--duration-normal) var(--ease-out);
+}
+
+.rotary-step-item.active {
+  border-color: var(--color-gold);
+  padding-left: calc(var(--space-2xl) + 4px);
+}
+
+.rotary-step-item.active .step-num {
+  color: var(--color-gold);
+}
+
+.rotary-step-item.active h3 {
+  color: var(--color-secondary);
+}
+
+.rotary-step-item.active p {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Section 03: Why Grid ─── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.why-card {
+  background-color: var(--color-card);
+  padding: var(--space-xl) var(--space-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.why-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-gold);
+}
+
+.why-card__num {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--color-gold-border);
+  display: block;
+  margin-bottom: var(--space-sm);
+  opacity: 0.4;
+}
+
+.why-card h3 {
+  font-size: var(--text-base);
+  margin-bottom: var(--space-md);
+  color: var(--color-gold);
+}
+
+.why-card p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
+
+/* ─── Section 04: Conveyor Belt ─── */
+.menu-conveyor-section {
+  padding: var(--space-section) 0;
+  overflow: hidden;
+}
+
+.conveyor-belt-wrapper {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  /* Overflow layout to fit edge-to-edge window width */
+  overflow: hidden;
+  padding: var(--space-lg) 0;
+  position: relative;
+}
+
+/* Faders to blend track left/right edges */
+.conveyor-belt-wrapper::before,
+.conveyor-belt-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 15%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.conveyor-belt-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-primary) 0%, transparent 100%);
+}
+
+.conveyor-belt-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-primary) 0%, transparent 100%);
+}
+
+.conveyor-track {
+  display: flex;
+  gap: var(--space-2xl);
+  width: max-content;
+  animation: conveyor-loop 35s linear infinite;
+}
+
+.conveyor-track:hover {
+  animation-play-state: paused;
+}
+
+.conveyor-plate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.plate-ring {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-gold-border);
+  box-shadow: var(--shadow-md), inset 0 0 15px rgba(199, 168, 109, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-card);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.plate-sushi-img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  border-radius: var(--radius-full);
+}
+
+.plate-rank {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-gold);
+  color: var(--color-primary);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.plate-info {
+  margin-top: var(--space-md);
+  text-align: center;
+  transition: opacity var(--transition-base);
+}
+
+.plate-info h4 {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  margin-bottom: 2px;
+  color: var(--color-secondary);
+}
+
+.plate-info span {
+  font-size: 10px;
+  color: var(--color-gold);
+}
+
+.conveyor-plate:hover .plate-ring {
+  transform: scale(1.08) rotate(5deg);
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-gold), 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes conveyor-loop {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+  /* Shift exactly half width (since array is doubled) */
+}
+
+/* ─── Section 05: Signature Collection Parallax ─── */
+.sig-presentation-section {
+  padding: 0 !important;
+}
+
+.sig-slide {
+  height: 85vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  /* Fallback for iOS */
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sig-slide--split {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: none !important;
+}
+
+.sig-slide__bg-left,
+.sig-slide__bg-right {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  z-index: 1;
+  transition: transform var(--transition-slow);
+}
+
+.sig-slide__bg-left {
+  left: 0;
+  background-position: 25% center;
+}
+
+.sig-slide__bg-right {
+  right: 0;
+  background-position: 75% center;
+}
+
+.sig-slide__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(11, 11, 11, 0.75) 0%,
+    rgba(11, 11, 11, 0.5) 45%,
+    rgba(11, 11, 11, 0.25) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sig-slide--split .sig-slide__content {
+  position: relative;
+  z-index: 3;
+}
+
+.sig-slide--split:hover .sig-slide__bg-left {
+  transform: scale(1.03);
+}
+
+.sig-slide--split:hover .sig-slide__bg-right {
+  transform: scale(1.03);
+}
+
+
+/* Enable parallax on desktop only for smoother performance */
+@media (min-width: 1025px) {
+  .sig-slide {
+    background-attachment: fixed;
+  }
+}
+
+.sig-slide__content {
+  max-width: 650px;
+  position: relative;
+  z-index: 2;
+}
+
+.sig-slide__num {
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.sig-slide h2 {
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-extrabold);
+  margin-bottom: var(--space-xs);
+  color: var(--color-secondary);
+}
+
+.sig-slide__tagline {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-gold);
+  margin-bottom: var(--space-lg);
+}
+
+.sig-slide__desc {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-2xl);
+}
+
+/* ─── Section 06: Chef's Craft ─── */
+.chef-craft-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  position: relative;
+}
+
+.chef-craft__sticky-visual {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-xl));
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  align-self: start;
+  max-height: calc(100vh - var(--header-height) - var(--space-3xl));
+  background-color: var(--color-primary);
+  z-index: 1;
+  transition: aspect-ratio 0.6s ease, width 0.6s ease;
+}
+
+.chef-visual-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--transition-slow), transform 8s ease-out;
+}
+
+.chef-visual-img.active {
+  opacity: 0.75;
+  transform: scale(1.04);
+}
+
+/* Philosophy image: portrait photo fills the box cleanly */
+.chef-visual-img--philosophy {
+  object-fit: contain;
+  object-position: center center;
+}
+
+.chef-visual-img--philosophy.active {
+  opacity: 0.85;
+  transform: none;
+}
+
+/* When Part 1 is active, container adapts to the image's natural ratio */
+.chef-craft__sticky-visual.fit-philosophy {
+  background-color: transparent;
+}
+
+/* Temp badge float */
+.temp-indicator-badge {
+  position: absolute;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  background-color: rgba(11, 11, 11, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  box-shadow: var(--shadow-lg);
+}
+
+.temp-label {
+  font-family: var(--font-en);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wider);
+}
+
+.temp-value {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.temp-number {
+  font-family: var(--font-en);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--color-gold);
+}
+
+.temp-unit {
+  font-size: var(--text-base);
+  color: var(--color-gold);
+}
+
+.chef-craft__scroll-text {
+  display: flex;
+  flex-direction: column;
+  gap: 30vh;
+  /* Adds massive vertical space to allow scroll trigger states */
+  padding-bottom: 20vh;
+  position: relative;
+  z-index: 10;
+}
+
+.chef-text-block {
+  opacity: 0.6;
+  transition: opacity var(--transition-base);
+  position: relative;
+  z-index: 10;
+}
+
+.chef-text-block.active {
+  opacity: 1;
+}
+
+.chef-craft-section .chef-text-block h2 {
+  color: #ffffff !important;
+  font-size: var(--text-3xl);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-md);
+  word-break: keep-all;
+}
+
+.chef-craft-section .chef-text-block p {
+  color: #ffffff !important;
+  font-size: var(--text-base);
+  margin-bottom: var(--space-md);
+  line-height: var(--leading-relaxed);
+  word-break: keep-all;
+}
+
+/* ─── Section 07: Stores Preview Grid ─── */
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.home-store-card {
+  background-color: var(--color-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.home-store-card__img-wrapper {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.home-store-card__img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.home-store-card:hover .home-store-card__img-wrapper img {
+  transform: scale(1.05);
+}
+
+.home-store-card__info {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.home-store-card h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-xs);
+  color: var(--color-secondary);
+}
+
+.home-store-card__address {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-lg);
+  flex-grow: 1;
+}
+
+.home-store-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  color: var(--color-gold);
+  margin-bottom: var(--space-lg);
+}
+
+.home-store-card__actions {
+  margin-top: auto;
+}
+
+.home-store-card__actions .btn {
+  width: 100%;
+}
+
+/* ─── Section 08: Customer Voice ─── */
+.reviews-slider-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: var(--space-md) 0;
+  scrollbar-width: none;
+  /* Firefox hide scroll */
+}
+
+.reviews-slider-wrapper::-webkit-scrollbar {
+  display: none;
+  /* Safari / Chrome hide scroll */
+}
+
+.reviews-slider {
+  display: flex;
+  gap: var(--space-lg);
+  width: max-content;
+  padding: 0 var(--gutter);
+}
+
+.home-review-card {
+  width: 320px;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* ─── Section 09 & 10: Call To Actions ─── */
+.home-franchise-section,
+.home-careers-section {
+  background-size: cover;
+  background-position: center;
+  padding: var(--space-5xl) 0;
+  position: relative;
+}
+
+.home-cta-desc {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  max-width: 700px;
+  margin: 0 auto var(--space-2xl) auto;
+}
+
+/* ============================================
+   Home Page Responsive Queries
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .rotary-steps-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .sig-slide {
+    height: 75vh;
+  }
+
+  .chef-craft-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .chef-craft__sticky-visual {
+    position: relative;
+    top: 0;
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-height: 70vh;
+  }
+
+  .chef-craft__sticky-visual.fit-philosophy {
+    aspect-ratio: auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .chef-craft__scroll-text {
+    gap: var(--space-4xl);
+    padding-bottom: 0;
+  }
+
+  .chef-text-block {
+    opacity: 1;
+  }
+
+  .store-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: var(--text-4xl);
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-card:last-child {
+    grid-column: auto;
+  }
+
+  .sig-slide h2 {
+    font-size: var(--text-3xl);
+  }
+
+  .store-grid {
+    grid-template-columns: 1fr;
+  }
+}

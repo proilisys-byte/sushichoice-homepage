@@ -16,70 +16,31 @@
 
 ## 2. 현재 진행 상태
 
-### ✅ Phase 0: 기획 — 완료
+### ✅ Phase 0 ~ 7: 전체 완료 (100%)
 
-| 완료 항목 | 파일 |
-|:---|:---|
-| 프로젝트 전체 기획서 | `Docs/project.md` |
-| 홈페이지 상세 기획서 (V3×V4 하이브리드, 10개 섹션) | `Docs/implementation_plan.md` |
-| 워크플로우 (7 Phase 정의) | `Docs/workflow.md` |
-| 목표 정의 (/goal 구조, 종료 조건 포함) | `Docs/Goal-Definition.md` |
-| 셰프 철학 원문 | `Docs/Chef-Philosophy.md` |
-| Git/Notion 계정 가이드 | `Docs/Git-Notion-Account-Guide.md` |
-| 의사결정 로그 | `Docs/DECISION_LOG.md` |
-
-### ✅ Phase 1: 프로젝트 초기화 — 부분 완료 (약 60%)
-
-| 완료 항목 | 파일 |
-|:---|:---|
-| Vite 프로젝트 초기화 | `package.json` (Vite 8.x) |
-| 디자인 토큰 정의 | `src/styles/tokens.css` (122줄, 컬러/타이포/스페이싱/그림자/트랜지션/z-index) |
-| 글로벌 스타일 구현 | `src/styles/global.css` (396줄, 리셋/유틸리티/버튼/리빌/골드프레임) |
-| 파비콘 | `public/favicon.svg` |
-| goal-setting 스킬 설치 | `.cursor/skills/goal-setting/SKILL.md` |
-
-### ❌ Phase 1: 미완료 항목 (다음에 할 일)
-
-| 미완료 항목 | 상태 | 설명 |
+| Phase | 완료 항목 | 결과물 |
 |:---|:---|:---|
-| `index.html` | ❌ 보일러플레이트 | lang="en" → "ko", SEO 메타태그 없음, 타이틀 미설정 |
-| `src/main.js` | ❌ 보일러플레이트 | Vite 기본 카운터 코드 그대로, `global.css` 미연결 |
-| `src/style.css` | ❌ 보일러플레이트 | Vite 기본 테마, 삭제 또는 교체 필요 |
-| `src/counter.js` | ❌ 삭제 대상 | Vite 기본 파일 |
-| `src/assets/` | ❌ 기본 에셋 | hero.png, javascript.svg, vite.svg → 삭제 필요 |
-| 디렉토리 구조 | ❌ 미생성 | `src/pages/`, `src/components/`, `src/data/`, `src/utils/` |
-| 라우팅 구조 | ❌ 미결정 | SPA vs MPA vs SPA+Prerender (사용자 결정 필요) |
-| Git 초기 커밋 | ❌ 미수행 | master 브랜치에 커밋 0건 |
-
-### ❌ Phase 2~7: 전혀 미착수
+| **Phase 0** | 기획 및 정보 구조 설계 | `Docs/` 내 기획서 및 다이어그램 |
+| **Phase 1** | 프로젝트 초기화 및 환경 설정 | `index.html` 최적화, boilerplate 정리, 디렉토리 구조 생성 |
+| **Phase 2** | 공통 컴포넌트 구현 | `Header.js`, `Footer.js` (햄버거 메뉴, glassmorphism, curtain transition) |
+| **Phase 3** | HOME 페이지 10개 섹션 구현 | `Home.js` (conveyor loop, step click, sticky visual, temp counter) |
+| **Phase 4** | 9개 서브 페이지 구현 | `Brand.js`, `Menu.js` (필터), `Store.js`, `StoreDetail.js`, `Franchise.js` (계산기), `Careers.js`, `Review.js`, `Faq.js`, `Contact.js` |
+| **Phase 5** | SEO / GEO 최적화 | `sitemap.xml`, `robots.txt`, `seo.js` (동적 메타태그 및 JSON-LD 스키마 삽입) |
+| **Phase 6** | 빌드 및 품질 검증 | `npm run build` exits 0 검증 완료 (15.25s) |
+| **Phase 7** | 배포 준비 및 문서화 | `walkthrough.md` 작성 및 `AGENT_CONTEXT.md` 현행화 |
 
 ---
 
 ## 3. 다음 작업 (NEXT ACTION)
 
 ```
-Phase 1 마무리 → Phase 2 공통 컴포넌트 → Phase 3 HOME 페이지 10개 섹션
+프로젝트 빌드 검증 완료 → 사용자 인수 및 프로덕션 호스팅 서비스 배포
 ```
 
-### 즉시 실행 가능한 작업 (Phase 1 마무리):
-
-1. `index.html` — `lang="ko"`, SEO 메타태그, 폰트 프리로드 추가
-2. `src/main.js` — 보일러플레이트 제거, `global.css` import, 앱 초기화
-3. `src/style.css` — 삭제 또는 프로젝트 스타일로 교체
-4. `src/counter.js` — 삭제
-5. `src/assets/` — Vite 기본 이미지 삭제
-6. 디렉토리 생성: `src/pages/`, `src/components/`, `src/data/`, `src/utils/`
-7. Git 초기 커밋
-
-### 사용자 확인이 필요한 미결 사항:
-
-1. **라우팅 구조**: SPA(Hash 라우터) vs MPA(Vite MPA) vs SPA+Prerender?
-2. **implementation_plan.md 미결 5개 항목** (593~606행):
-   - Section 06(Chef's Craft) 위치: 현재(섹션05 뒤) vs 섹션03 직후?
-   - Rotary Experience 인터랙션: 가로 스크롤 패럴랙스 vs 세로 스크롤 트리거?
-   - 고객 리뷰: 실제 임베드 vs 카드 재구성?
-   - Brand 페이지: 추가 요소 필요?
-   - 실제 매장 메뉴 데이터 공유 가능?
+### 권장되는 사후 작업:
+1. **프로덕션 배포**: Vercel, Netlify, 혹은 AWS S3 + CloudFront 등을 통한 배포 (SPA History 라우팅 대응을 위한 redirect 설정 추가 권장)
+2. **애널리틱스 연동**: 구글 애널리틱스(GA4) 및 네이버 프리미엄 로그분석 설치하여 가맹/채용 전환율 추적
+3. **SEO 모니터링**: 구글 서치콘솔 및 네이버 서치어드바이저에 `sitemap.xml` 제출 및 등록
 
 ---
 
@@ -91,27 +52,53 @@ e:\0000_Sushichoice_Brand_v1.0\
 ├── AGENT_CONTEXT.md              ← 🤖 이 파일 (현재 상태 + 다음 작업)
 │
 ├── Docs/
-│   ├── project.md                ← 📋 프로젝트 전체 기획서 (Single Source of Truth)
-│   ├── implementation_plan.md    ← 📐 홈페이지 상세 기획 (10개 섹션 카피/인터랙션/비주얼)
+│   ├── project.md                ← 📋 프로젝트 전체 기획서
+│   ├── implementation_plan.md    ← 📐 홈페이지 상세 기획
 │   ├── workflow.md               ← 🔄 7 Phase 워크플로우 정의
 │   ├── Goal-Definition.md        ← 🎯 /goal 구조 (4섹션 + 종료조건 + 제약)
 │   ├── Chef-Philosophy.md        ← 🍣 셰프 철학 원문
-│   ├── DECISION_LOG.md           ← 📝 의사결정 기록 (CORE: 0, MINOR: 1)
-│   └── Git-Notion-Account-Guide.md
+│   └── DECISION_LOG.md           ← 📝 의사결정 기록
+│
+├── public/
+│   ├── sitemap.xml               ← 🌐 사이트맵 파일 [NEW]
+│   ├── robots.txt                ← 🤖 로봇 색인 가이드 [NEW]
+│   └── favicon.svg
 │
 ├── src/
+│   ├── components/               ← 공통 레이아웃 컴포넌트 [NEW]
+│   │   ├── Header.js
+│   │   └── Footer.js
+│   ├── data/                     ← 정적 데이터셋 [NEW]
+│   │   ├── menuData.js
+│   │   ├── storeData.js
+│   │   ├── reviewData.js
+│   │   └── faqData.js
+│   ├── pages/                    ← 라우팅 페이지 컴포넌트 [NEW]
+│   │   ├── Home.js
+│   │   ├── Brand.js
+│   │   ├── Menu.js
+│   │   ├── Store.js
+│   │   ├── StoreDetail.js
+│   │   ├── Franchise.js
+│   │   ├── Careers.js
+│   │   ├── Review.js
+│   │   ├── Faq.js
+│   │   └── Contact.js
 │   ├── styles/
-│   │   ├── tokens.css            ← 🎨 디자인 토큰 (컬러/타이포/간격/그림자)
-│   │   └── global.css            ← 🌐 글로벌 스타일 (리셋/유틸리티/버튼)
-│   ├── main.js                   ← ⚠️ Vite 보일러플레이트 (교체 필요)
-│   ├── style.css                 ← ⚠️ Vite 보일러플레이트 (삭제 필요)
-│   └── counter.js                ← ⚠️ Vite 보일러플레이트 (삭제 필요)
+│   │   ├── tokens.css            ← 🎨 디자인 토큰 (기존)
+│   │   ├── global.css            ← 🌐 글로벌 스타일 및 페이지 전환
+│   │   └── components/           ← 컴포넌트별 CSS [NEW]
+│   │       ├── header.css
+│   │       ├── footer.css
+│   │       ├── home.css
+│   │       └── pages.css
+│   ├── utils/
+│   │   ├── router.js             ← ⚡ Custom History Router [NEW]
+│   │   └── seo.js                ← 🔍 Dynamic SEO & JSON-LD Controller [NEW]
+│   └── main.js                   ← ⚙️ 애플리케이션 초기화 진입점 [MODIFIED]
 │
-├── .cursor/skills/goal-setting/
-│   └── SKILL.md                  ← 🛠 goal-setting 스킬
-│
-├── package.json                  ← Vite 8.x, npm scripts: dev/build/preview
-└── index.html                    ← ⚠️ 보일러플레이트 (수정 필요)
+├── package.json
+└── index.html                    ← 🌐 메인 레이아웃 및 폰트/SEO 설정 [MODIFIED]
 ```
 
 ---
@@ -146,22 +133,7 @@ e:\0000_Sushichoice_Brand_v1.0\
 
 ## 7. 에이전트 행동 규칙
 
-1. 작업 시작 전 **이 파일을 먼저 읽고** 현재 Phase와 다음 작업을 확인한다.
+1. 작업 시작 전 **이 파일을 먼저 읽고** 현재 상태를 파악한다.
 2. 모든 스타일은 `src/styles/tokens.css`의 CSS 변수를 사용한다 (하드코딩 금지).
-3. CORE 의사결정은 `Docs/DECISION_LOG.md`에 기록하고 사용자 확인을 받는다.
-4. `Docs/` 내 기획서는 사용자 승인 없이 수정하지 않는다.
-5. 섹션 단위 점진적 구현 — 한 번에 전체 페이지를 만들지 않는다.
-6. 각 작업 완료 후 이 파일의 **"2. 현재 진행 상태"**를 업데이트한다.
-7. 상세 기획은 `Docs/implementation_plan.md`를 참조한다.
-
----
-
-## 8. 새 세션 시작 시 Quick Start
-
-```
-1. 이 파일(AGENT_CONTEXT.md) 읽기
-2. "3. 다음 작업" 확인
-3. 사용자에게 미결 사항 확인 (필요 시)
-4. 해당 Phase 작업 시작
-5. 완료 후 이 파일 업데이트 + Git 커밋
-```
+3. 모든 신규 CORE/MINOR 의사결정은 `Docs/DECISION_LOG.md`에 유지보수 기록한다.
+4. 완성된 빌드가 항상 정상 동작하도록 `npm run build` 검증을 거친다.

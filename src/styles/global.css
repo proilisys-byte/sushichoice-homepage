@@ -393,3 +393,37 @@ input, textarea, select {
   background-color: var(--color-gold);
   color: var(--color-primary);
 }
+
+/* ─── Premium Page Curtain Transition Overlay ─── */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-primary);
+  z-index: var(--z-modal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-in-out);
+}
+
+.page-transition.is-active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.transition-line {
+  width: 1px;
+  height: 0%;
+  background-color: var(--color-gold);
+  transition: height 0.5s var(--ease-in-out);
+}
+
+.page-transition.is-active .transition-line {
+  height: 100%;
+}
+
