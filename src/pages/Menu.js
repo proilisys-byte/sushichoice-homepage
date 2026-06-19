@@ -23,15 +23,11 @@ export async function renderMenu() {
           <!-- Category Filters -->
           <div class="menu-filters reveal">
             <button class="menu-filter-btn active" data-category="all">전체</button>
-            <button class="menu-filter-btn" data-category="salmon">연어</button>
-            <button class="menu-filter-btn" data-category="tuna">참치</button>
-            <button class="menu-filter-btn" data-category="shrimp">새우</button>
-            <button class="menu-filter-btn" data-category="flatfish">광어/활어</button>
-            <button class="menu-filter-btn" data-category="wagyu">와규</button>
-            <button class="menu-filter-btn" data-category="gunkan">군함</button>
+            <button class="menu-filter-btn" data-category="nigiri">초밥류</button>
+            <button class="menu-filter-btn" data-category="gunkan">군함류</button>
+            <button class="menu-filter-btn" data-category="grilled">직화구이</button>
             <button class="menu-filter-btn" data-category="roll">롤</button>
-            <button class="menu-filter-btn" data-category="side">사이드</button>
-            <button class="menu-filter-btn" data-category="dessert">디저트/음료</button>
+            <button class="menu-filter-btn" data-category="fried">튀김류</button>
           </div>
 
           <!-- Menu Grid -->
@@ -82,11 +78,7 @@ function initMenuInteractivity() {
   function renderItems(category) {
     let filteredData = menuData;
     if (category !== 'all') {
-      if (category === 'dessert') {
-        filteredData = menuData.filter(item => item.category === 'dessert' || item.category === 'drink');
-      } else {
-        filteredData = menuData.filter(item => item.category === category);
-      }
+      filteredData = menuData.filter(item => item.category === category);
     }
 
     if (filteredData.length === 0) {
