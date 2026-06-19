@@ -417,7 +417,6 @@ export async function renderHome() {
       <div class="menu-modal promo-popup" id="setting-popup">
         <div class="menu-modal__backdrop" id="setting-popup-backdrop"></div>
         <div class="menu-modal__content promo-popup__content">
-          <button class="menu-modal__close promo-popup__close" id="setting-popup-close" aria-label="닫기">&times;</button>
           <div class="menu-modal__body">
             <img src="${settingPaper}" alt="스시초이스 메뉴 및 세팅지 안내" class="promo-popup__image" />
             <div class="promo-popup__footer">
@@ -440,7 +439,6 @@ function initSettingPopup() {
   const popup = document.querySelector('#setting-popup');
   if (!popup) return;
 
-  const closeBtn = document.querySelector('#setting-popup-close');
   const confirmBtn = document.querySelector('#setting-popup-confirm');
   const backdrop = document.querySelector('#setting-popup-backdrop');
   const dismissCheckbox = document.querySelector('#setting-popup-dismiss');
@@ -461,7 +459,6 @@ function initSettingPopup() {
     document.body.style.overflow = 'hidden';
   });
 
-  closeBtn?.addEventListener('click', closePopup);
   confirmBtn?.addEventListener('click', closePopup);
   backdrop?.addEventListener('click', closePopup);
 
