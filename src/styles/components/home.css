@@ -946,7 +946,13 @@
 }
 
 /* ─── Setting Paper Promo Popup ─── */
-.promo-popup .menu-modal__content {
+.promo-popup.menu-modal {
+  z-index: var(--z-toast);
+  transition: none !important;
+}
+
+.promo-popup.menu-modal .menu-modal__content {
+  transition: none !important;
   max-width: min(960px, 95vw);
   background: transparent;
   box-shadow: none;

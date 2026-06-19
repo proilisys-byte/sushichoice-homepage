@@ -28,9 +28,74 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@400;700&display=swap" />
 
+    <!-- Promo popup image: earliest fetch on mobile -->
+    <link rel="preload" as="image" href="/promo/setting-paper-mobile.webp" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/promo/setting-paper.webp" media="(min-width: 769px)" fetchpriority="high" />
+
+    <style id="promo-popup-critical">
+      #setting-popup.menu-modal{position:fixed;inset:0;z-index:600;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+      #setting-popup.menu-modal.is-open{opacity:1;pointer-events:auto}
+      #setting-popup .menu-modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.85)}
+      #setting-popup .menu-modal__content{position:relative;z-index:2;width:min(960px,95vw);background:transparent;box-shadow:none;overflow:visible;transform:none}
+      #setting-popup .promo-popup__image{width:100%;height:auto;display:block;max-height:80vh;object-fit:contain;background:#fff;border-radius:8px 8px 0 0}
+      #setting-popup .promo-popup__footer{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 16px;background:#151515;border-radius:0 0 8px 8px}
+      #setting-popup .promo-popup__dismiss{display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(248,247,244,.6);cursor:pointer}
+      #setting-popup .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;font-size:14px;font-weight:600;border-radius:4px;border:1px solid #C7A86D;background:transparent;color:#F8F7F4;cursor:pointer}
+    </style>
+
     <title>스시초이스 | Premium Rotary Sushi Experience</title>
   </head>
   <body>
+    <!-- Setting Paper Promo Popup (static: no wait for JS bundle / home render) -->
+    <div class="menu-modal promo-popup" id="setting-popup">
+      <div class="menu-modal__backdrop" id="setting-popup-backdrop"></div>
+      <div class="menu-modal__content promo-popup__content">
+        <div class="menu-modal__body">
+          <img
+            id="setting-popup-image"
+            src="/promo/setting-paper-mobile.webp"
+            srcset="/promo/setting-paper-mobile.webp 960w, /promo/setting-paper.webp 1920w"
+            sizes="(max-width: 768px) 95vw, 960px"
+            alt="스시초이스 메뉴 및 세팅지 안내"
+            class="promo-popup__image"
+            fetchpriority="high"
+            decoding="sync"
+          />
+          <div class="promo-popup__footer">
+            <label class="promo-popup__dismiss">
+              <input type="checkbox" id="setting-popup-dismiss" />
+              오늘 하루 보지 않기
+            </label>
+            <button type="button" class="btn btn--secondary" id="setting-popup-confirm">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var path = location.pathname.replace(/\/$/, '') || '/';
+        if (path !== '/') return;
+        try {
+          if (localStorage.getItem('sushichoice-setting-popup-dismissed') === new Date().toISOString().slice(0, 10)) return;
+        } catch (e) {
+          return;
+        }
+        var popup = document.getElementById('setting-popup');
+        var img = document.getElementById('setting-popup-image');
+        if (!popup || !img) return;
+        function openPopup() {
+          popup.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+        if (img.complete && img.naturalWidth > 0) openPopup();
+        else {
+          img.addEventListener('load', openPopup, { once: true });
+          img.addEventListener('error', openPopup, { once: true });
+        }
+      })();
+    </script>
+
     <!-- App Root -->
     <div id="app"></div>
 

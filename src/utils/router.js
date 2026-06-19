@@ -1,6 +1,9 @@
 // Custom Vanilla JS History-based Router for SUSHI CHOICE
 
+import { initSettingPopup } from './settingPopup.js';
+
 let routes = {};
+let isInitialLoad = true;
 const appContainer = document.querySelector('#app');
 const transitionOverlay = document.querySelector('#page-transition');
 
@@ -44,10 +47,10 @@ async function handleRouting(path = window.location.pathname) {
     component = routes['/'] || (() => '<h2>Page Not Found</h2>');
   }
 
-  // Trigger page transition curtain overlay
-  if (transitionOverlay) {
+  // Trigger page transition curtain overlay (skip on first paint for faster LCP)
+  const useTransition = transitionOverlay && !isInitialLoad;
+  if (useTransition) {
     transitionOverlay.classList.add('is-active');
-    // Wait for the curtain to close (500ms)
     await new Promise(resolve => setTimeout(resolve, 500));
   }
 
@@ -75,13 +78,20 @@ async function handleRouting(path = window.location.pathname) {
   // Scroll to top
   window.scrollTo(0, 0);
 
+  if (lookupPath === '/') {
+    initSettingPopup();
+  }
+
+  const postRenderDelay = isInitialLoad ? 0 : 100;
+  isInitialLoad = false;
+
   // Initialize Page Interactivity and Scroll Reveal Observers
   setTimeout(() => {
     initializePageInteractivity();
-    if (transitionOverlay) {
+    if (useTransition) {
       transitionOverlay.classList.remove('is-active');
     }
-  }, 100);
+  }, postRenderDelay);
 }
 
 /**

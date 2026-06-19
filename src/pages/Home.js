@@ -27,13 +27,11 @@ import sigSeasonal from '../assets/images/signature/sig-seasonal.jpg';
 
 import franchiseBg from '../assets/images/franchise/franchise-bg.jpg';
 import careersBg from '../assets/images/careers/careers-bg.jpg';
-import settingPaper from '../assets/images/promo/setting-paper.jpg';
 
 export async function renderHome() {
-  // Setup interactivity after rendering
-  setTimeout(() => {
+  queueMicrotask(() => {
     initHomeInteractivity();
-  }, 100);
+  });
 
   // Top 10 items for the Golden Plate Conveyor Belt
   const top10Menu = menuData.filter(item => item.isSignature).slice(0, 10);
@@ -412,73 +410,11 @@ export async function renderHome() {
           <a href="/careers" class="btn btn--primary btn--large" data-link>채용공고 확인 및 즉시 지원 &rarr;</a>
         </div>
       </section>
-
-      <!-- Setting Paper Promo Popup -->
-      <div class="menu-modal promo-popup" id="setting-popup">
-        <div class="menu-modal__backdrop" id="setting-popup-backdrop"></div>
-        <div class="menu-modal__content promo-popup__content">
-          <div class="menu-modal__body">
-            <img src="${settingPaper}" alt="스시초이스 메뉴 및 세팅지 안내" class="promo-popup__image" />
-            <div class="promo-popup__footer">
-              <label class="promo-popup__dismiss">
-                <input type="checkbox" id="setting-popup-dismiss" />
-                오늘 하루 보지 않기
-              </label>
-              <button type="button" class="btn btn--secondary" id="setting-popup-confirm">닫기</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </main>
   `;
 }
 
-const SETTING_POPUP_KEY = 'sushichoice-setting-popup-dismissed';
-
-function initSettingPopup() {
-  const popup = document.querySelector('#setting-popup');
-  if (!popup) return;
-
-  const confirmBtn = document.querySelector('#setting-popup-confirm');
-  const backdrop = document.querySelector('#setting-popup-backdrop');
-  const dismissCheckbox = document.querySelector('#setting-popup-dismiss');
-
-  const today = new Date().toISOString().slice(0, 10);
-  if (localStorage.getItem(SETTING_POPUP_KEY) === today) return;
-
-  const closePopup = () => {
-    if (dismissCheckbox?.checked) {
-      localStorage.setItem(SETTING_POPUP_KEY, today);
-    }
-    popup.classList.remove('is-open');
-    document.body.style.overflow = '';
-  };
-
-  requestAnimationFrame(() => {
-    popup.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  });
-
-  confirmBtn?.addEventListener('click', closePopup);
-  backdrop?.addEventListener('click', closePopup);
-
-  const onKeyDown = (e) => {
-    if (e.key === 'Escape') closePopup();
-  };
-  document.addEventListener('keydown', onKeyDown);
-
-  window.addEventListener('pageLoaded', function cleanup(e) {
-    if (e.detail && e.detail.path !== '/') {
-      document.removeEventListener('keydown', onKeyDown);
-      document.body.style.overflow = '';
-      window.removeEventListener('pageLoaded', cleanup);
-    }
-  });
-}
-
 function initHomeInteractivity() {
-  initSettingPopup();
-
   // 0. Kick off hero video playback as early as possible
   const heroVideoEl = document.querySelector('.hero-video');
   if (heroVideoEl) {

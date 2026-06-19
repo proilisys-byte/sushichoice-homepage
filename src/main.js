@@ -15,6 +15,7 @@ import { renderFooter } from './components/Footer.js';
 
 // ─── Import Custom Router ───
 import { addRoute, initRouter } from './utils/router.js';
+import { initSettingPopup } from './utils/settingPopup.js';
 
 // ─── Import dynamic SEO updater (runs globally) ───
 import './utils/seo.js';
@@ -46,6 +47,8 @@ addRoute('/contact', renderContact);
 
 // ─── Initialize Core Layout & Router ───
 document.addEventListener('DOMContentLoaded', () => {
+  initSettingPopup();
+
   // Render common header
   const headerNode = renderHeader();
   document.body.insertBefore(headerNode, document.querySelector('#app'));
