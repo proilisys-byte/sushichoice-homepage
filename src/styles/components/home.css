@@ -944,3 +944,64 @@
     font-size: var(--text-xs);
   }
 }
+
+/* ─── Setting Paper Promo Popup ─── */
+.promo-popup .menu-modal__content {
+  max-width: min(960px, 95vw);
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.promo-popup__content {
+  border: none;
+}
+
+.promo-popup__close {
+  top: -8px;
+  right: -8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-card);
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  box-shadow: var(--shadow-md);
+}
+
+.promo-popup__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  max-height: 80vh;
+  object-fit: contain;
+  background: #fff;
+}
+
+.promo-popup__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-card);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.promo-popup__dismiss {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.promo-popup__dismiss input {
+  accent-color: var(--color-gold);
+}
