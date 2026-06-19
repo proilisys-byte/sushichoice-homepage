@@ -1,39 +1,242 @@
 // Menu Dataset for SUSHI CHOICE
 
-// Import fallbacks for desserts/other uses if needed
-import flatfishImg from '../assets/images/menu/menu-02-flatfish.jpg';
+// ─── Nigiri (초밥) ───
+import salmonNigiriImg from '../assets/images/menu/salmon_nigiri.jpg';
+import salmonBellyNigiriImg from '../assets/images/menu/salmon_belly_nigiri.jpg';
+import flatfishNigiriImg from '../assets/images/menu/flatfish_nigiri.jpg';
+import flatfishAgedKimchiImg from '../assets/images/menu/flatfish_aged_kimchi.jpg';
+import seabreamNigiriImg from '../assets/images/menu/seabream_nigiri.jpg';
+import croakerNigiriImg from '../assets/images/menu/croaker_nigiri.jpg';
+import surfClamNigiriImg from '../assets/images/menu/surf_clam_nigiri.jpg';
+import conchNigiriImg from '../assets/images/menu/conch_nigiri.jpg';
+import cuttlefishNigiriImg from '../assets/images/menu/cuttlefish_nigiri.jpg';
+import abaloneNigiriImg from '../assets/images/menu/abalone_nigiri.jpg';
+import mackerelBozushiImg from '../assets/images/menu/mackerel_bozushi.jpg';
+import sweetShrimpNigiriImg from '../assets/images/menu/sweet_shrimp_nigiri.jpg';
+import soyShrimpNigiriImg from '../assets/images/menu/soy_shrimp_nigiri.jpg';
+import steamedShrimpNigiriImg from '../assets/images/menu/steamed_shrimp_nigiri.jpg';
+import eggNigiriImg from '../assets/images/menu/egg_nigiri.jpg';
 
-// Import newly cropped images
+// ─── Grilled (직화구이) ───
 import grilledWagyuRibeyeImg from '../assets/images/menu/grilled_wagyu_ribeye.jpg';
 import grilledBeefShortPlateImg from '../assets/images/menu/grilled_beef_short_plate.jpg';
-import grilledSalmonImg from '../assets/images/menu/grilled_salmon.jpg';
 import grilledSeabreamBellyImg from '../assets/images/menu/grilled_seabream_belly.jpg';
 import grilledEelImg from '../assets/images/menu/grilled_eel.jpg';
 import grilledConchImg from '../assets/images/menu/grilled_conch.jpg';
 import grilledCuttlefishImg from '../assets/images/menu/grilled_cuttlefish.jpg';
-import grilledRawShrimpImg from '../assets/images/menu/grilled_raw_shrimp.jpg';
 import grilledSpottedShrimpImg from '../assets/images/menu/grilled_spotted_shrimp.jpg';
 import grilledSteamedShrimpImg from '../assets/images/menu/grilled_steamed_shrimp.jpg';
-import grilledSwordfishImg from '../assets/images/menu/grilled_swordfish.jpg';
+import grilledSalmonImg from '../assets/images/menu/grilled_salmon.jpg';
+import grilledRawShrimpImg from '../assets/images/menu/grilled_raw_shrimp.jpg';
+
+// ─── Roll (롤) ───
 import salmonRollImg from '../assets/images/menu/salmon_roll.jpg';
 import cheeseShrimpRollImg from '../assets/images/menu/cheese_shrimp_roll.jpg';
 import tamagoEelRollImg from '../assets/images/menu/tamago_eel_roll.jpg';
 import crabmeatAlmondRollImg from '../assets/images/menu/crabmeat_almond_roll.jpg';
 import salmonCrabmeatRollImg from '../assets/images/menu/salmon_crabmeat_roll.jpg';
+
+// ─── Gunkan (군함) ───
 import takowasabiGunkanImg from '../assets/images/menu/takowasabi_gunkan.jpg';
 import beefTartareGunkanImg from '../assets/images/menu/beef_tartare_gunkan.jpg';
 import flyingFishRoeGunkanImg from '../assets/images/menu/flying_fish_roe_gunkan.jpg';
-import idoGunkanImg from '../assets/images/menu/ido_gunkan.jpg';
+
+// ─── Side (사이드) ───
 import yakitoriImg from '../assets/images/menu/yakitori.jpg';
 import menboshaImg from '../assets/images/menu/menbosha.jpg';
-import friedKingShrimpImg from '../assets/images/menu/fried_king_shrimp.jpg';
 import friedCrabLegsImg from '../assets/images/menu/fried_crab_legs.jpg';
 import friedChickenDrumetteImg from '../assets/images/menu/fried_chicken_drumette.jpg';
 
 export const menuData = [
-  // 1. 적화구이류
+  // ───────────────────────────────────────────
+  // 1. 초밥 (니기리)
+  // ───────────────────────────────────────────
   {
     id: 1,
+    name: '연어초밥',
+    englishName: 'Salmon Nigiri',
+    category: 'salmon',
+    price: 2000,
+    description: '대서양 청정 해역에서 공수한 기름진 생연어를 부드러운 샤리 위에 올린 스시초이스의 대표 초밥.',
+    allergens: '생선, 쌀',
+    image: salmonNigiriImg,
+    isSignature: true,
+    tag: 'Best'
+  },
+  {
+    id: 2,
+    name: '연어대뱃살',
+    englishName: 'Salmon Belly Nigiri',
+    category: 'salmon',
+    price: 2000,
+    description: '입안에서 사르르 녹는 최고급 연어 대뱃살(하라스) 부위만을 두툼하게 올린 프리미엄 초밥.',
+    allergens: '생선, 쌀',
+    image: salmonBellyNigiriImg,
+    isSignature: true,
+    tag: 'Signature'
+  },
+  {
+    id: 3,
+    name: '광어초밥',
+    englishName: 'Flatfish Nigiri',
+    category: 'flatfish',
+    price: 2000,
+    description: '쫄깃하고 담백한 자연산 활광어를 정성껏 손질하여 올린 흰살 생선의 정석 초밥.',
+    allergens: '생선, 쌀',
+    image: flatfishNigiriImg,
+    isSignature: true,
+    tag: 'Popular'
+  },
+  {
+    id: 4,
+    name: '광어묵은지',
+    englishName: 'Flatfish & Aged Kimchi Nigiri',
+    category: 'flatfish',
+    price: 2000,
+    description: '담백한 광어 위에 잘 익은 묵은지를 곁들여 깔끔하고 새콤한 풍미가 일품인 이색 초밥.',
+    allergens: '생선, 대두, 쌀',
+    image: flatfishAgedKimchiImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 5,
+    name: '참돔초밥',
+    englishName: 'Sea Bream Nigiri',
+    category: 'flatfish',
+    price: 2000,
+    description: '은은한 단맛과 탄력 있는 식감을 자랑하는 봄철 제철 참돔을 올린 고급 흰살 초밥.',
+    allergens: '생선, 쌀',
+    image: seabreamNigiriImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 6,
+    name: '점성어초밥',
+    englishName: 'Croaker Nigiri',
+    category: 'flatfish',
+    price: 2000,
+    description: '쫀득한 식감과 깊은 감칠맛이 매력적인 점성어를 신선하게 손질하여 올린 활어 초밥.',
+    allergens: '생선, 쌀',
+    image: croakerNigiriImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 7,
+    name: '갑오징어초밥',
+    englishName: 'Cuttlefish Nigiri',
+    category: 'flatfish',
+    price: 2000,
+    description: '칼집을 넣어 부드럽게 씹히는 쫄깃한 갑오징어의 단맛을 그대로 살린 담백한 초밥.',
+    allergens: '연체류/오징어, 쌀',
+    image: cuttlefishNigiriImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 8,
+    name: '참소라초밥',
+    englishName: 'Conch Nigiri',
+    category: 'flatfish',
+    price: 2000,
+    description: '오독오독 씹는 맛이 일품인 신선한 참소라를 슬라이스하여 올린 바다 향 가득한 초밥.',
+    allergens: '조개류/소라, 쌀',
+    image: conchNigiriImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 9,
+    name: '북방조개초밥',
+    englishName: 'Surf Clam Nigiri',
+    category: 'flatfish',
+    price: 2000,
+    description: '쫄깃한 식감과 은은한 단맛이 살아있는 북방조개(홍조개)를 올린 신선한 조개 초밥.',
+    allergens: '조개류, 쌀',
+    image: surfClamNigiriImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 10,
+    name: '전복초밥',
+    englishName: 'Abalone Nigiri',
+    category: 'flatfish',
+    price: 2000,
+    description: '쫄깃하게 손질한 싱싱한 활전복을 통째로 올려 바다의 영양과 풍미를 담은 보양 초밥.',
+    allergens: '조개류/전복, 쌀',
+    image: abaloneNigiriImg,
+    isSignature: true,
+    tag: 'Signature'
+  },
+  {
+    id: 11,
+    name: '고등어봉초밥',
+    englishName: 'Mackerel Bo-zushi',
+    category: 'flatfish',
+    price: 2000,
+    description: '식초에 살짝 절여 비린 맛 없이 고소한 고등어를 길게 눌러 만든 일본식 봉초밥.',
+    allergens: '생선, 대두, 쌀',
+    image: mackerelBozushiImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 12,
+    name: '청미새우',
+    englishName: 'Sweet Shrimp Nigiri',
+    category: 'shrimp',
+    price: 2000,
+    description: '투명하고 탱글한 생새우의 폭발하는 단맛을 그대로 느낄 수 있는 신선한 생새우 초밥.',
+    allergens: '갑각류, 쌀',
+    image: sweetShrimpNigiriImg,
+    isSignature: true,
+    tag: 'Popular'
+  },
+  {
+    id: 13,
+    name: '간장새우',
+    englishName: 'Soy-marinated Shrimp Nigiri',
+    category: 'shrimp',
+    price: 2000,
+    description: '특제 간장에 숙성시킨 새우를 올려 짭조름하고 감칠맛 깊은 풍미를 살린 초밥.',
+    allergens: '갑각류, 대두, 밀, 쌀',
+    image: soyShrimpNigiriImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 14,
+    name: '찐새우초밥',
+    englishName: 'Steamed Shrimp Nigiri',
+    category: 'shrimp',
+    price: 2000,
+    description: '담백하게 자숙한 통통한 찐새우를 올려 남녀노소 누구나 부담 없이 즐기는 초밥.',
+    allergens: '갑각류, 쌀',
+    image: steamedShrimpNigiriImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 15,
+    name: '계란초밥',
+    englishName: 'Tamago (Egg) Nigiri',
+    category: 'side',
+    price: 2000,
+    description: '폭신하고 달콤하게 구워낸 일식 계란말이를 샤리 위에 올린 부드러운 정통 타마고 초밥.',
+    allergens: '계란, 대두, 쌀',
+    image: eggNigiriImg,
+    isSignature: false,
+    tag: ''
+  },
+
+  // ───────────────────────────────────────────
+  // 2. 직화구이
+  // ───────────────────────────────────────────
+  {
+    id: 16,
     name: '꽃등심직화',
     englishName: 'Grilled Wagyu Ribeye',
     category: 'wagyu',
@@ -45,7 +248,7 @@ export const menuData = [
     tag: 'Best'
   },
   {
-    id: 2,
+    id: 17,
     name: '우삼겹직화',
     englishName: 'Grilled Beef Short Plate',
     category: 'wagyu',
@@ -57,19 +260,7 @@ export const menuData = [
     tag: 'Popular'
   },
   {
-    id: 3,
-    name: '연어직화',
-    englishName: 'Grilled Salmon',
-    category: 'salmon',
-    price: 2000,
-    description: '생연어 위에 소스를 얹고 직화 토칭하여 기름진 고소함과 불향을 극대화한 스시.',
-    allergens: '생선, 대두, 쌀',
-    image: grilledSalmonImg,
-    isSignature: true,
-    tag: 'Best'
-  },
-  {
-    id: 4,
+    id: 18,
     name: '도미뱃살양념구이',
     englishName: 'Seasoned Grilled Sea Bream Belly',
     category: 'flatfish',
@@ -81,7 +272,7 @@ export const menuData = [
     tag: 'Signature'
   },
   {
-    id: 5,
+    id: 19,
     name: '민물장어초밥',
     englishName: 'Grilled Freshwater Eel',
     category: 'flatfish',
@@ -93,7 +284,7 @@ export const menuData = [
     tag: 'Signature'
   },
   {
-    id: 6,
+    id: 20,
     name: '참소라직화',
     englishName: 'Grilled Conch',
     category: 'flatfish',
@@ -105,7 +296,7 @@ export const menuData = [
     tag: ''
   },
   {
-    id: 7,
+    id: 21,
     name: '갑오징어직화',
     englishName: 'Grilled Cuttlefish',
     category: 'flatfish',
@@ -117,19 +308,7 @@ export const menuData = [
     tag: ''
   },
   {
-    id: 8,
-    name: '생새우직화',
-    englishName: 'Grilled Raw Shrimp',
-    category: 'shrimp',
-    price: 2000,
-    description: '신선하고 투명한 생새우에 비법 치즈마요 소스를 얹어 토치로 직화 구이한 스시.',
-    allergens: '갑각류, 우유, 쌀',
-    image: grilledRawShrimpImg,
-    isSignature: true,
-    tag: 'Popular'
-  },
-  {
-    id: 9,
+    id: 22,
     name: '꽃새우직화',
     englishName: 'Grilled Spotted Shrimp',
     category: 'shrimp',
@@ -141,7 +320,7 @@ export const menuData = [
     tag: ''
   },
   {
-    id: 10,
+    id: 23,
     name: '찐새우직화',
     englishName: 'Grilled Steamed Shrimp',
     category: 'shrimp',
@@ -152,22 +331,12 @@ export const menuData = [
     isSignature: false,
     tag: ''
   },
-  {
-    id: 11,
-    name: '황새치직화',
-    englishName: 'Grilled Swordfish',
-    category: 'tuna',
-    price: 2000,
-    description: '흰살 참치인 황새치 뱃살 부위를 토치로 살짝 익혀 부드러운 맛을 끌어올린 스시.',
-    allergens: '생선, 쌀',
-    image: grilledSwordfishImg,
-    isSignature: false,
-    tag: ''
-  },
 
-  // 2. 롤 · 군함류
+  // ───────────────────────────────────────────
+  // 3. 롤 · 군함
+  // ───────────────────────────────────────────
   {
-    id: 12,
+    id: 24,
     name: '연어롤',
     englishName: 'Salmon Roll',
     category: 'roll',
@@ -179,7 +348,7 @@ export const menuData = [
     tag: 'Best'
   },
   {
-    id: 13,
+    id: 25,
     name: '치즈새우롤',
     englishName: 'Cheese Shrimp Roll',
     category: 'roll',
@@ -191,7 +360,7 @@ export const menuData = [
     tag: 'Popular'
   },
   {
-    id: 14,
+    id: 26,
     name: '계란장어롤',
     englishName: 'Tamago Eel Roll',
     category: 'roll',
@@ -203,7 +372,7 @@ export const menuData = [
     tag: 'Signature'
   },
   {
-    id: 15,
+    id: 27,
     name: '크랩맛살아몬드롤',
     englishName: 'Crab Meat Almond Roll',
     category: 'roll',
@@ -215,7 +384,7 @@ export const menuData = [
     tag: ''
   },
   {
-    id: 16,
+    id: 28,
     name: '연어게살말이',
     englishName: 'Salmon Crabmeat Roll',
     category: 'roll',
@@ -227,7 +396,7 @@ export const menuData = [
     tag: ''
   },
   {
-    id: 17,
+    id: 29,
     name: '타코와사비군함',
     englishName: 'Tako Wasabi Gunkan',
     category: 'gunkan',
@@ -239,7 +408,7 @@ export const menuData = [
     tag: 'Popular'
   },
   {
-    id: 18,
+    id: 30,
     name: '육회군함',
     englishName: 'Beef Tartare Gunkan',
     category: 'gunkan',
@@ -251,7 +420,7 @@ export const menuData = [
     tag: 'Popular'
   },
   {
-    id: 19,
+    id: 31,
     name: '날치알군함',
     englishName: 'Flying Fish Roe Gunkan',
     category: 'gunkan',
@@ -262,20 +431,12 @@ export const menuData = [
     isSignature: false,
     tag: ''
   },
+
+  // ───────────────────────────────────────────
+  // 4. 사이드
+  // ───────────────────────────────────────────
   {
-    id: 20,
-    name: '이도군함(활어)',
-    englishName: 'Ido Gunkan (Minced Fish)',
-    category: 'gunkan',
-    price: 2000,
-    description: '신선하게 다진 활어 필렛에 다진 파와 참기름을 살짝 버무려 산뜻한 고소함을 담은 군함.',
-    allergens: '생선, 참기름, 쌀',
-    image: idoGunkanImg,
-    isSignature: false,
-    tag: ''
-  },
-  {
-    id: 21,
+    id: 32,
     name: '닭꼬치',
     englishName: 'Yakitori (Chicken Skewer)',
     category: 'side',
@@ -287,7 +448,7 @@ export const menuData = [
     tag: ''
   },
   {
-    id: 22,
+    id: 33,
     name: '멘보샤 튀김',
     englishName: 'Mienbaoxia (Fried Shrimp Toast)',
     category: 'side',
@@ -298,22 +459,8 @@ export const menuData = [
     isSignature: false,
     tag: ''
   },
-
-  // 3. 튀김류
   {
-    id: 23,
-    name: '왕새우튀김',
-    englishName: 'Fried King Shrimp',
-    category: 'side',
-    price: 2000,
-    description: '크고 살이 꽉 찬 왕새우를 일식 튀김옷으로 아주 바삭하고 부드럽게 튀겨낸 별미.',
-    allergens: '갑각류, 밀, 계란',
-    image: friedKingShrimpImg,
-    isSignature: true,
-    tag: 'Popular'
-  },
-  {
-    id: 24,
+    id: 34,
     name: '대게다리튀김',
     englishName: 'Fried Snow Crab Legs',
     category: 'side',
@@ -324,8 +471,36 @@ export const menuData = [
     isSignature: false,
     tag: ''
   },
+
+  // ───────────────────────────────────────────
+  // 5. 준비 중 메뉴 (실사진 준비 예정)
+  // ───────────────────────────────────────────
   {
-    id: 25,
+    id: 35,
+    name: '연어직화',
+    englishName: 'Grilled Salmon',
+    category: 'salmon',
+    price: 2000,
+    description: '생연어 위에 소스를 얹고 직화 토칭하여 기름진 고소함과 불향을 극대화한 스시.',
+    allergens: '생선, 대두, 쌀',
+    image: grilledSalmonImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 36,
+    name: '생새우직화',
+    englishName: 'Grilled Raw Shrimp',
+    category: 'shrimp',
+    price: 2000,
+    description: '신선하고 투명한 생새우에 비법 치즈마요 소스를 얹어 토치로 직화 구이한 스시.',
+    allergens: '갑각류, 우유, 쌀',
+    image: grilledRawShrimpImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 37,
     name: '닭봉튀김',
     englishName: 'Fried Chicken Drumette',
     category: 'side',
@@ -333,32 +508,6 @@ export const menuData = [
     description: '짭조름하게 염지한 닭봉 부위를 바삭하게 튀겨내 맥주와 잘 어울리는 사이드 튀김.',
     allergens: '닭고기, 밀',
     image: friedChickenDrumetteImg,
-    isSignature: false,
-    tag: ''
-  },
-
-  // 4. 디저트 (기존 유지 및 가격 변경)
-  {
-    id: 26,
-    name: '녹차 아이스크림',
-    englishName: 'Green Tea Ice Cream',
-    category: 'dessert',
-    price: 2000,
-    description: '쌉싸름하고 달콤한 정통 일본식 녹차 가루를 아낌없이 넣어 깔끔하게 마무리가 가능한 아이스크림 디저트.',
-    allergens: '우유',
-    image: flatfishImg,
-    isSignature: false,
-    tag: ''
-  },
-  {
-    id: 27,
-    name: '멜론 디저트',
-    englishName: 'Fresh Melon',
-    category: 'dessert',
-    price: 2000,
-    description: '당도 높은 신선한 메론을 먹기 좋은 크기로 썰어 차갑게 제공하는 계절 디저트.',
-    allergens: '',
-    image: flatfishImg,
     isSignature: false,
     tag: ''
   }
