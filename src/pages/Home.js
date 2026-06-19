@@ -6,7 +6,7 @@ import { reviewData } from '../data/reviewData';
 
 // Image & Video Imports
 import heroVideo from '../assets/images/hero/hero-video.mp4';
-import heroBg from '../assets/images/hero/hero-bg.png';
+import heroPoster from '../assets/images/hero/hero-poster.jpg';
 
 import rotaryVideo from '../assets/images/rotary/rotary-video.mp4';
 import rotaryChoose from '../assets/images/rotary/rotary-choose.jpg';
@@ -44,8 +44,8 @@ export async function renderHome() {
     <main class="page-home">
       <!-- Section 01 — HERO: 흐르는 럭셔리 -->
       <section class="hero-section">
-        <div class="hero-video-wrapper" style="background-image: url(${heroBg}); background-size: cover; background-position: center;">
-          <video class="hero-video" autoplay loop muted playsinline preload="auto" poster="${heroBg}">
+        <div class="hero-video-wrapper" style="background-image: url(${heroPoster}); background-size: cover; background-position: center;">
+          <video class="hero-video" autoplay loop muted playsinline preload="auto" poster="${heroPoster}">
             <source src="${heroVideo}" type="video/mp4" />
           </video>
           <div class="hero-overlay"></div>
