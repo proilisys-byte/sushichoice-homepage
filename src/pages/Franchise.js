@@ -16,7 +16,7 @@ export async function renderFranchise() {
           <h1 class="franchise-hero__title">성공하는 회전초밥 브랜드,<br/>함께 성장할 가맹점주를 모십니다.</h1>
           <p class="franchise-hero__desc">검증된 초밀착 점주 관리 시스템과 안정된 주 6회 산지 유통망으로 리스크를 최소화합니다.</p>
           <div class="divider-gold divider-gold--center"></div>
-          <a href="#calculator-section" class="btn btn--primary">수익률 계산기 바로가기</a>
+          <a href="#calculator-section" id="calc-cta" class="btn btn--primary">수익률 계산기 바로가기</a>
         </div>
       </section>
 
@@ -240,6 +240,20 @@ export async function renderFranchise() {
 }
 
 function initFranchiseInteractivity() {
+  // "수익률 계산기 바로가기" → smooth-scroll to calculator, offset for the fixed header
+  const calcCta = document.querySelector('#calc-cta');
+  const calcSection = document.querySelector('#calculator-section');
+  if (calcCta && calcSection) {
+    calcCta.addEventListener('click', e => {
+      e.preventDefault();
+      const headerH = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--header-height')
+      ) || 80;
+      const top = calcSection.getBoundingClientRect().top + window.pageYOffset - headerH - 16;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  }
+
   const tableInput = document.querySelector('#calc-tables');
   const spendInput = document.querySelector('#calc-spend');
 
