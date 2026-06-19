@@ -193,7 +193,7 @@ export async function renderFranchise() {
           <div class="section-header text-center reveal">
             <span class="section-label">PARTNERSHIP INQUIRY</span>
             <h2 class="section-title">가맹 창업 상담 신청</h2>
-            <p class="section-subtitle">문의사항을 성실하게 작성해주시면, 전담 지점 창업 설계사가 개설 희망 지역의 상권 검토서 초안을 준비하여 연락드리겠습니다.</p>
+            <p class="section-subtitle">문의사항을 성실하게 작성해주시면, 전담 지점 창업 설계사가 개설 희망 지역 확인후 연락드리겠습니다.</p>
             <div class="divider-gold divider-gold--center"></div>
           </div>
 
