@@ -23,6 +23,7 @@ export async function renderMenu() {
           <!-- Category Filters -->
           <div class="menu-filters reveal">
             <button class="menu-filter-btn active" data-category="all">전체</button>
+            <button class="menu-filter-btn" data-category="special">특초밥</button>
             <button class="menu-filter-btn" data-category="nigiri">초밥류</button>
             <button class="menu-filter-btn" data-category="gunkan">군함류</button>
             <button class="menu-filter-btn" data-category="grilled">직화구이</button>

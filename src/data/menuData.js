@@ -1,5 +1,11 @@
 // Menu Dataset for SUSHI CHOICE
-// 메뉴판(메뉴1·메뉴2) 기준 구성: 초밥류 / 군함류 / 직화구이 / 롤 / 튀김류
+// 메뉴판(메뉴1·메뉴2) 기준 구성: 특초밥 / 초밥류 / 군함류 / 직화구이 / 롤 / 튀김류
+
+// ─── 특초밥 (2접시 가격 · 4,000원) ───
+import otoroNigiriImg from '../assets/images/menu/otoro_nigiri.jpg';
+import steamedAbaloneImg from '../assets/images/menu/steamed_abalone.jpg';
+import uniGunkanImg from '../assets/images/menu/uni_gunkan.jpg';
+import salmonRoeGunkanImg from '../assets/images/menu/salmon_roe_gunkan.jpg';
 
 // ─── 초밥류 (Nigiri) ───
 import swordfishNigiriImg from '../assets/images/menu/swordfish_nigiri.jpg';
@@ -24,7 +30,6 @@ import inariNigiriImg from '../assets/images/menu/inari_nigiri.jpg';
 import eggNigiriImg from '../assets/images/menu/egg_nigiri.jpg';
 import surfClamNigiriImg from '../assets/images/menu/surf_clam_nigiri.jpg';
 import squidNigiriImg from '../assets/images/menu/squid_nigiri.jpg';
-import abaloneNigiriImg from '../assets/images/menu/abalone_nigiri.jpg';
 import mackerelBozushiImg from '../assets/images/menu/mackerel_bozushi.jpg';
 
 // ─── 군함류 (Gunkan) ───
@@ -68,6 +73,70 @@ import friedChickenWingImg from '../assets/images/menu/fried_chicken_wing.jpg';
 import menboshaImg from '../assets/images/menu/menbosha.jpg';
 
 export const menuData = [
+  // ═══════════════════════════════════════════
+  // 0. 특초밥 (SPECIAL · 2접시 가격 4,000원)
+  // ═══════════════════════════════════════════
+  {
+    id: 57,
+    name: '오도로',
+    englishName: 'Otoro (Tuna Belly)',
+    category: 'special',
+    price: 4000,
+    description: '참다랑어 대뱃살(오도로) 부위만을 두툼하게 올려 입안에서 사르르 녹는 최고급 초밥. 2접시 가격(4,000원) 특선 메뉴입니다.',
+    allergens: '생선, 쌀',
+    image: otoroNigiriImg,
+    isSignature: true,
+    tag: '특선'
+  },
+  {
+    id: 58,
+    name: '전복찜',
+    englishName: 'Steamed Abalone Nigiri',
+    category: 'special',
+    price: 4000,
+    description: '부드럽게 쪄낸 통전복을 올려 쫄깃한 식감과 바다의 영양을 그대로 담은 보양 초밥. 2접시 가격(4,000원) 특선 메뉴입니다.',
+    allergens: '조개류/전복, 쌀',
+    image: steamedAbaloneImg,
+    isSignature: true,
+    tag: '특선'
+  },
+  {
+    id: 59,
+    name: '성게알',
+    englishName: 'Uni (Sea Urchin) Gunkan',
+    category: 'special',
+    price: 4000,
+    description: '진하고 크리미한 성게알(우니)을 김군함 위에 가득 올린 바다의 풍미가 응축된 별미. 2접시 가격(4,000원) 특선 메뉴입니다.',
+    allergens: '성게, 쌀',
+    image: uniGunkanImg,
+    isSignature: true,
+    tag: '특선'
+  },
+  {
+    id: 60,
+    name: '연어알',
+    englishName: 'Salmon Roe (Ikura) Gunkan',
+    category: 'special',
+    price: 4000,
+    description: '톡톡 터지며 짭짤한 감칠맛이 입안 가득 퍼지는 연어알(이쿠라)을 듬뿍 올린 군함 초밥. 2접시 가격(4,000원) 특선 메뉴입니다.',
+    allergens: '생선알, 쌀',
+    image: salmonRoeGunkanImg,
+    isSignature: true,
+    tag: '특선'
+  },
+  {
+    id: 24,
+    name: '고등어봉초밥',
+    englishName: 'Mackerel Bo-zushi',
+    category: 'special',
+    price: 4000,
+    description: '식초에 살짝 절여 비린 맛 없이 고소한 고등어를 길게 눌러 만든 일본식 봉초밥. 2접시 가격(4,000원) 특선 메뉴입니다.',
+    allergens: '생선, 대두, 쌀',
+    image: mackerelBozushiImg,
+    isSignature: false,
+    tag: '특선'
+  },
+
   // ═══════════════════════════════════════════
   // 1. 초밥류 (NIGIRI)
   // ═══════════════════════════════════════════
@@ -332,30 +401,6 @@ export const menuData = [
     description: '투명하고 부드러운 한치 살을 올려 깔끔하고 은은한 단맛이 매력적인 초밥.',
     allergens: '연체류/오징어, 쌀',
     image: squidNigiriImg,
-    isSignature: false,
-    tag: ''
-  },
-  {
-    id: 23,
-    name: '전복초밥',
-    englishName: 'Abalone Nigiri',
-    category: 'nigiri',
-    price: 2000,
-    description: '쫄깃하게 손질한 싱싱한 활전복을 올려 바다의 영양과 풍미를 담은 보양 초밥.',
-    allergens: '조개류/전복, 쌀',
-    image: abaloneNigiriImg,
-    isSignature: true,
-    tag: 'Signature'
-  },
-  {
-    id: 24,
-    name: '고등어봉초밥',
-    englishName: 'Mackerel Bo-zushi',
-    category: 'nigiri',
-    price: 2000,
-    description: '식초에 살짝 절여 비린 맛 없이 고소한 고등어를 길게 눌러 만든 일본식 봉초밥.',
-    allergens: '생선, 대두, 쌀',
-    image: mackerelBozushiImg,
     isSignature: false,
     tag: ''
   },
