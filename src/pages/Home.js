@@ -44,8 +44,8 @@ export async function renderHome() {
     <main class="page-home">
       <!-- Section 01 — HERO: 흐르는 럭셔리 -->
       <section class="hero-section">
-        <div class="hero-video-wrapper">
-          <video class="hero-video" autoplay loop muted playsinline>
+        <div class="hero-video-wrapper" style="background-image: url(${heroBg}); background-size: cover; background-position: center;">
+          <video class="hero-video" autoplay loop muted playsinline preload="auto" poster="${heroBg}">
             <source src="${heroVideo}" type="video/mp4" />
           </video>
           <div class="hero-overlay"></div>
@@ -416,6 +416,18 @@ export async function renderHome() {
 }
 
 function initHomeInteractivity() {
+  // 0. Kick off hero video playback as early as possible
+  const heroVideoEl = document.querySelector('.hero-video');
+  if (heroVideoEl) {
+    heroVideoEl.load();
+    const tryPlay = () => {
+      const p = heroVideoEl.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    };
+    tryPlay();
+    heroVideoEl.addEventListener('canplay', tryPlay, { once: true });
+  }
+
   // 1. Step interactivity inside Section 02 (Rotary Experience)
   const steps = document.querySelectorAll('.rotary-step-item');
   const visuals = document.querySelectorAll('.visual-panel');
