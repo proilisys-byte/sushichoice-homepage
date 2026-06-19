@@ -3,10 +3,7 @@
 import { menuData } from '../data/menuData';
 
 export async function renderMenu() {
-  // Let the browser load the HTML template first
-  setTimeout(() => {
-    initMenuInteractivity();
-  }, 100);
+  requestAnimationFrame(() => initMenuInteractivity());
 
   return `
     <main class="page-menu">
@@ -87,15 +84,17 @@ function initMenuInteractivity() {
       return;
     }
 
-    menuGrid.innerHTML = filteredData.map(item => {
+    menuGrid.innerHTML = filteredData.map((item, index) => {
       // Formatter for price
       const formattedPrice = item.price.toLocaleString();
       const tagHtml = item.tag ? `<span class="menu-card__tag">${item.tag}</span>` : '';
+      const loadingAttr = index < 8 ? 'eager' : 'lazy';
+      const fetchPriority = index < 4 ? ' fetchpriority="high"' : '';
       
       return `
-        <div class="menu-card gold-frame reveal" data-id="${item.id}">
+        <div class="menu-card gold-frame is-visible" data-id="${item.id}">
           <div class="menu-card__img-container">
-            <img src="${item.image}" alt="${item.name}" class="menu-card__img" loading="lazy" />
+            <img src="${item.image}" alt="${item.name}" class="menu-card__img" loading="${loadingAttr}" decoding="async"${fetchPriority} />
             ${tagHtml}
           </div>
           <div class="menu-card__info">
@@ -112,7 +111,7 @@ function initMenuInteractivity() {
     }).join('');
 
     // Re-bind click events on menu card detail buttons
-    menuGrid.querySelectorAll('.menu-card').forEach((card, index) => {
+    menuGrid.querySelectorAll('.menu-card').forEach(card => {
       const btn = card.querySelector('.menu-card__detail-btn');
       const itemId = parseInt(card.getAttribute('data-id'));
       
@@ -120,11 +119,6 @@ function initMenuInteractivity() {
       
       btn.addEventListener('click', openModalHandler);
       card.querySelector('.menu-card__img-container').addEventListener('click', openModalHandler);
-
-      // Reveal dynamically-rendered cards (the page-level reveal observer ran
-      // before these cards existed, so trigger their fade-in here with a stagger).
-      const delay = Math.min(index * 40, 600);
-      setTimeout(() => card.classList.add('is-visible'), delay);
     });
   }
 

@@ -2,75 +2,75 @@
 // 메뉴판(메뉴1·메뉴2) 기준 구성: 특초밥 / 초밥류 / 군함류 / 직화구이 / 롤 / 튀김류
 
 // ─── 특초밥 (2접시 가격 · 4,000원) ───
-import otoroNigiriImg from '../assets/images/menu/otoro_nigiri.jpg';
-import steamedAbaloneImg from '../assets/images/menu/steamed_abalone.jpg';
-import uniGunkanImg from '../assets/images/menu/uni_gunkan.jpg';
-import salmonRoeGunkanImg from '../assets/images/menu/salmon_roe_gunkan.jpg';
+import otoroNigiriImg from '../assets/images/menu/otoro_nigiri.webp';
+import steamedAbaloneImg from '../assets/images/menu/steamed_abalone.webp';
+import uniGunkanImg from '../assets/images/menu/uni_gunkan.webp';
+import salmonRoeGunkanImg from '../assets/images/menu/salmon_roe_gunkan.webp';
 
 // ─── 초밥류 (Nigiri) ───
-import swordfishNigiriImg from '../assets/images/menu/swordfish_nigiri.jpg';
-import bigeyeTunaNigiriImg from '../assets/images/menu/bigeye_tuna_nigiri.jpg';
-import swordfishBellyNigiriImg from '../assets/images/menu/swordfish_belly_nigiri.jpg';
-import flatfishNigiriImg from '../assets/images/menu/flatfish_nigiri.jpg';
-import seabreamNigiriImg from '../assets/images/menu/seabream_nigiri.jpg';
-import croakerNigiriImg from '../assets/images/menu/croaker_nigiri.jpg';
-import flatfishAgedKimchiImg from '../assets/images/menu/flatfish_aged_kimchi.jpg';
-import salmonBellyNigiriImg from '../assets/images/menu/salmon_belly_nigiri.jpg';
-import salmonNigiriImg from '../assets/images/menu/salmon_nigiri.jpg';
-import salmonDressingImg from '../assets/images/menu/salmon_dressing.jpg';
-import conchNigiriImg from '../assets/images/menu/conch_nigiri.jpg';
-import spottedShrimpNigiriImg from '../assets/images/menu/spotted_shrimp_nigiri.jpg';
-import soyShrimpNigiriImg from '../assets/images/menu/soy_shrimp_nigiri.jpg';
-import steamedShrimpNigiriImg from '../assets/images/menu/steamed_shrimp_nigiri.jpg';
-import sweetShrimpNigiriImg from '../assets/images/menu/sweet_shrimp_nigiri.jpg';
-import amaebiNigiriImg from '../assets/images/menu/amaebi_nigiri.jpg';
-import scallopNigiriImg from '../assets/images/menu/scallop_nigiri.jpg';
-import cuttlefishNigiriImg from '../assets/images/menu/cuttlefish_nigiri.jpg';
-import inariNigiriImg from '../assets/images/menu/inari_nigiri.jpg';
-import eggNigiriImg from '../assets/images/menu/egg_nigiri.jpg';
-import surfClamNigiriImg from '../assets/images/menu/surf_clam_nigiri.jpg';
-import squidNigiriImg from '../assets/images/menu/squid_nigiri.jpg';
-import mackerelBozushiImg from '../assets/images/menu/mackerel_bozushi.jpg';
+import swordfishNigiriImg from '../assets/images/menu/swordfish_nigiri.webp';
+import bigeyeTunaNigiriImg from '../assets/images/menu/bigeye_tuna_nigiri.webp';
+import swordfishBellyNigiriImg from '../assets/images/menu/swordfish_belly_nigiri.webp';
+import flatfishNigiriImg from '../assets/images/menu/flatfish_nigiri.webp';
+import seabreamNigiriImg from '../assets/images/menu/seabream_nigiri.webp';
+import croakerNigiriImg from '../assets/images/menu/croaker_nigiri.webp';
+import flatfishAgedKimchiImg from '../assets/images/menu/flatfish_aged_kimchi.webp';
+import salmonBellyNigiriImg from '../assets/images/menu/salmon_belly_nigiri.webp';
+import salmonNigiriImg from '../assets/images/menu/salmon_nigiri.webp';
+import salmonDressingImg from '../assets/images/menu/salmon_dressing.webp';
+import conchNigiriImg from '../assets/images/menu/conch_nigiri.webp';
+import spottedShrimpNigiriImg from '../assets/images/menu/spotted_shrimp_nigiri.webp';
+import soyShrimpNigiriImg from '../assets/images/menu/soy_shrimp_nigiri.webp';
+import steamedShrimpNigiriImg from '../assets/images/menu/steamed_shrimp_nigiri.webp';
+import sweetShrimpNigiriImg from '../assets/images/menu/sweet_shrimp_nigiri.webp';
+import amaebiNigiriImg from '../assets/images/menu/amaebi_nigiri.webp';
+import scallopNigiriImg from '../assets/images/menu/scallop_nigiri.webp';
+import cuttlefishNigiriImg from '../assets/images/menu/cuttlefish_nigiri.webp';
+import inariNigiriImg from '../assets/images/menu/inari_nigiri.webp';
+import eggNigiriImg from '../assets/images/menu/egg_nigiri.webp';
+import surfClamNigiriImg from '../assets/images/menu/surf_clam_nigiri.webp';
+import squidNigiriImg from '../assets/images/menu/squid_nigiri.webp';
+import mackerelBozushiImg from '../assets/images/menu/mackerel_bozushi.webp';
 
 // ─── 군함류 (Gunkan) ───
-import flyingRoeTemakiImg from '../assets/images/menu/flying_roe_temaki.jpg';
-import takowasabiGunkanImg from '../assets/images/menu/takowasabi_gunkan.jpg';
-import beefTartareGunkanImg from '../assets/images/menu/beef_tartare_gunkan.jpg';
-import idoGunkanImg from '../assets/images/menu/ido_gunkan.jpg';
-import flyingFishRoeGunkanImg from '../assets/images/menu/flying_fish_roe_gunkan.jpg';
+import flyingRoeTemakiImg from '../assets/images/menu/flying_roe_temaki.webp';
+import takowasabiGunkanImg from '../assets/images/menu/takowasabi_gunkan.webp';
+import beefTartareGunkanImg from '../assets/images/menu/beef_tartare_gunkan.webp';
+import idoGunkanImg from '../assets/images/menu/ido_gunkan.webp';
+import flyingFishRoeGunkanImg from '../assets/images/menu/flying_fish_roe_gunkan.webp';
 
 // ─── 직화구이 (Grilled) ───
-import grilledWagyuRibeyeImg from '../assets/images/menu/grilled_wagyu_ribeye.jpg';
-import grilledBeefShortPlateImg from '../assets/images/menu/grilled_beef_short_plate.jpg';
-import grilledSalmonImg from '../assets/images/menu/grilled_salmon.jpg';
-import grilledSeabreamBellyImg from '../assets/images/menu/grilled_seabream_belly.jpg';
-import grilledEelImg from '../assets/images/menu/grilled_eel.jpg';
-import grilledConchImg from '../assets/images/menu/grilled_conch.jpg';
-import grilledCuttlefishImg from '../assets/images/menu/grilled_cuttlefish.jpg';
-import grilledSpottedShrimpImg from '../assets/images/menu/grilled_spotted_shrimp.jpg';
-import grilledAmaebiImg from '../assets/images/menu/grilled_amaebi.jpg';
-import grilledSoyShrimpImg from '../assets/images/menu/grilled_soy_shrimp.jpg';
-import grilledSteamedShrimpImg from '../assets/images/menu/grilled_steamed_shrimp.jpg';
-import grilledSwordfishImg from '../assets/images/menu/grilled_swordfish.jpg';
-import grilledSquidImg from '../assets/images/menu/grilled_squid.jpg';
-import grilledScallopAdductorImg from '../assets/images/menu/grilled_scallop_adductor.jpg';
-import grilledScallopImg from '../assets/images/menu/grilled_scallop.jpg';
-import grilledEggImg from '../assets/images/menu/grilled_egg.jpg';
-import grilledEggShrimpImg from '../assets/images/menu/grilled_egg_shrimp.jpg';
-import yakitoriImg from '../assets/images/menu/yakitori.jpg';
+import grilledWagyuRibeyeImg from '../assets/images/menu/grilled_wagyu_ribeye.webp';
+import grilledBeefShortPlateImg from '../assets/images/menu/grilled_beef_short_plate.webp';
+import grilledSalmonImg from '../assets/images/menu/grilled_salmon.webp';
+import grilledSeabreamBellyImg from '../assets/images/menu/grilled_seabream_belly.webp';
+import grilledEelImg from '../assets/images/menu/grilled_eel.webp';
+import grilledConchImg from '../assets/images/menu/grilled_conch.webp';
+import grilledCuttlefishImg from '../assets/images/menu/grilled_cuttlefish.webp';
+import grilledSpottedShrimpImg from '../assets/images/menu/grilled_spotted_shrimp.webp';
+import grilledAmaebiImg from '../assets/images/menu/grilled_amaebi.webp';
+import grilledSoyShrimpImg from '../assets/images/menu/grilled_soy_shrimp.webp';
+import grilledSteamedShrimpImg from '../assets/images/menu/grilled_steamed_shrimp.webp';
+import grilledSwordfishImg from '../assets/images/menu/grilled_swordfish.webp';
+import grilledSquidImg from '../assets/images/menu/grilled_squid.webp';
+import grilledScallopAdductorImg from '../assets/images/menu/grilled_scallop_adductor.webp';
+import grilledScallopImg from '../assets/images/menu/grilled_scallop.webp';
+import grilledEggImg from '../assets/images/menu/grilled_egg.webp';
+import grilledEggShrimpImg from '../assets/images/menu/grilled_egg_shrimp.webp';
+import yakitoriImg from '../assets/images/menu/yakitori.webp';
 
 // ─── 롤 (Roll) ───
-import salmonCrabmeatRollImg from '../assets/images/menu/salmon_crabmeat_roll.jpg';
-import salmonRollImg from '../assets/images/menu/salmon_roll.jpg';
-import tamagoEelRollImg from '../assets/images/menu/tamago_eel_roll.jpg';
-import cheeseShrimpRollImg from '../assets/images/menu/cheese_shrimp_roll.jpg';
-import crabmeatAlmondRollImg from '../assets/images/menu/crabmeat_almond_roll.jpg';
+import salmonCrabmeatRollImg from '../assets/images/menu/salmon_crabmeat_roll.webp';
+import salmonRollImg from '../assets/images/menu/salmon_roll.webp';
+import tamagoEelRollImg from '../assets/images/menu/tamago_eel_roll.webp';
+import cheeseShrimpRollImg from '../assets/images/menu/cheese_shrimp_roll.webp';
+import crabmeatAlmondRollImg from '../assets/images/menu/crabmeat_almond_roll.webp';
 
 // ─── 튀김류 (Fried) ───
-import friedKingShrimpImg from '../assets/images/menu/fried_king_shrimp.jpg';
-import friedCrabLegsImg from '../assets/images/menu/fried_crab_legs.jpg';
-import friedChickenWingImg from '../assets/images/menu/fried_chicken_wing.jpg';
-import menboshaImg from '../assets/images/menu/menbosha.jpg';
+import friedKingShrimpImg from '../assets/images/menu/fried_king_shrimp.webp';
+import friedCrabLegsImg from '../assets/images/menu/fried_crab_legs.webp';
+import friedChickenWingImg from '../assets/images/menu/fried_chicken_wing.webp';
+import menboshaImg from '../assets/images/menu/menbosha.webp';
 
 export const menuData = [
   // ═══════════════════════════════════════════
