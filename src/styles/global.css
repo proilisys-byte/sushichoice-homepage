@@ -365,13 +365,13 @@ input, textarea, select {
   }
 
   .btn {
-    padding: 12px 24px;
-    font-size: var(--text-xs);
+    padding: 14px 28px;
+    font-size: var(--text-base);
   }
 
   .btn--large {
-    padding: 14px 32px;
-    font-size: var(--text-sm);
+    padding: 16px 36px;
+    font-size: var(--text-lg);
   }
 }
 
@@ -382,8 +382,8 @@ input, textarea, select {
   }
 
   .btn {
-    padding: 10px 20px;
-    font-size: var(--text-xs);
+    padding: 13px 24px;
+    font-size: var(--text-base);
   }
 
   .section-title {
