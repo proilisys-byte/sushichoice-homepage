@@ -143,31 +143,31 @@ export async function renderHome() {
             <!-- Card 1 -->
             <div class="why-card gold-frame">
               <span class="why-card__num text-en">01</span>
-              <h3>Freshness (신선함)</h3>
+              <h3>Freshness<br/>(신선함)</h3>
               <p>새벽 03:00 전국 포구에서 선적되어 당일 아침 매장에 도착하는 활어들만 고집하며, 당일 전량 소진의 원칙을 철저하게 준수합니다.</p>
             </div>
             <!-- Card 2 -->
             <div class="why-card gold-frame">
               <span class="why-card__num text-en">02</span>
-              <h3>Variety (다양성)</h3>
+              <h3>Variety<br/>(다양성)</h3>
               <p>기본 연어, 광어뿐 아니라 블랙 플레이트 스페셜 등 80여 가지 이상의 다채로운 수제 스시 라인업이 골든 레일 위에서 지루할 틈을 주지 않습니다.</p>
             </div>
             <!-- Card 3 -->
             <div class="why-card gold-frame">
               <span class="why-card__num text-en">03</span>
-              <h3>Value (합리적 가치)</h3>
+              <h3>Value<br/>(합리적 가치)</h3>
               <p>부담 없는 균일가 요금제를 기반으로 최상급 하이엔드 신동진 쌀, 천연 발효 식초만을 활용해 격조 높은 미식을 선사합니다.</p>
             </div>
             <!-- Card 4 -->
             <div class="why-card gold-frame">
               <span class="why-card__num text-en">04</span>
-              <h3>Experience (경험의 즐거움)</h3>
+              <h3>Experience<br/>(경험의 즐거움)</h3>
               <p>레일을 흐르는 시각적 즐거움과 함께, 터치 패드를 통한 즉석 오더 및 셰프들의 친절하고 활력 있는 응대로 입과 눈이 모두 유쾌합니다.</p>
             </div>
             <!-- Card 5 -->
             <div class="why-card gold-frame">
               <span class="why-card__num text-en">05</span>
-              <h3>Family (가족 친화)</h3>
+              <h3>Family<br/>(가족 친화)</h3>
               <p>영유아 동반 가족들이 편안하게 앉아 대화할 수 있는 여유로운 크기의 소파 테이블 부스석과 맵지 않은 와사비 조절 메뉴를 항시 마련하고 있습니다.</p>
             </div>
           </div>

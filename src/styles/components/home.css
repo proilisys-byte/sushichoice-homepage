@@ -902,25 +902,13 @@
   }
 
   .why-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: var(--space-md);
-    padding: var(--space-md) var(--gutter);
-    margin-left: calc(-1 * var(--gutter));
-    margin-right: calc(-1 * var(--gutter));
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
-  }
-
-  .why-grid::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for Chrome/Safari */
   }
 
   .why-grid .why-card {
-    flex: 0 0 calc(100vw - 2 * var(--gutter));
-    scroll-snap-align: center;
+    width: 100%;
   }
 
   .store-grid {
