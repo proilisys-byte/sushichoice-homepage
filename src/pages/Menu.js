@@ -119,7 +119,7 @@ function initMenuInteractivity() {
     }).join('');
 
     // Re-bind click events on menu card detail buttons
-    menuGrid.querySelectorAll('.menu-card').forEach(card => {
+    menuGrid.querySelectorAll('.menu-card').forEach((card, index) => {
       const btn = card.querySelector('.menu-card__detail-btn');
       const itemId = parseInt(card.getAttribute('data-id'));
       
@@ -127,6 +127,11 @@ function initMenuInteractivity() {
       
       btn.addEventListener('click', openModalHandler);
       card.querySelector('.menu-card__img-container').addEventListener('click', openModalHandler);
+
+      // Reveal dynamically-rendered cards (the page-level reveal observer ran
+      // before these cards existed, so trigger their fade-in here with a stagger).
+      const delay = Math.min(index * 40, 600);
+      setTimeout(() => card.classList.add('is-visible'), delay);
     });
   }
 
