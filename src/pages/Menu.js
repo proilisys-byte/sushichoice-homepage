@@ -2,8 +2,40 @@
 
 import { menuData } from '../data/menuData';
 
+function renderMenuCardsHTML(items) {
+  return items.map(item => {
+    const formattedPrice = item.price.toLocaleString();
+    const tagHtml = item.tag ? `<span class="menu-card__tag">${item.tag}</span>` : '';
+
+    return `
+      <div class="menu-card gold-frame" data-id="${item.id}">
+        <div class="menu-card__img-container">
+          <img src="${item.image}" alt="${item.name}" class="menu-card__img" loading="eager" decoding="async" />
+          ${tagHtml}
+        </div>
+        <div class="menu-card__info">
+          <div class="menu-card__header">
+            <span class="menu-card__cat text-en">${item.category.toUpperCase()}</span>
+            <span class="menu-card__price">${formattedPrice}원</span>
+          </div>
+          <h3 class="menu-card__title">${item.name}</h3>
+          <p class="menu-card__desc">${item.description}</p>
+          <button class="menu-card__detail-btn">상세 정보 & 알레르기</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function preloadMenuImages() {
+  menuData.forEach(item => {
+    const img = new Image();
+    img.src = item.image;
+  });
+}
+
 export async function renderMenu() {
-  requestAnimationFrame(() => initMenuInteractivity());
+  preloadMenuImages();
 
   return `
     <main class="page-menu">
@@ -28,9 +60,9 @@ export async function renderMenu() {
             <button class="menu-filter-btn" data-category="fried">튀김류</button>
           </div>
 
-          <!-- Menu Grid -->
-          <div class="menu-grid reveal" id="menu-grid">
-            <!-- Dynamically populated -->
+          <!-- Menu Grid (rendered immediately so images start loading with the page HTML) -->
+          <div class="menu-grid" id="menu-grid">
+            ${renderMenuCardsHTML(menuData)}
           </div>
         </div>
       </section>
@@ -57,13 +89,13 @@ function initMenuInteractivity() {
   const modalBackdrop = document.querySelector('#modal-backdrop');
   const modalBody = document.querySelector('#modal-body');
 
-  // Initial populate (all items)
-  renderItems('all');
+  if (!menuGrid) return;
+
+  bindMenuCardEvents();
 
   // Filter Buttons Click
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Toggle active styling
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -71,6 +103,17 @@ function initMenuInteractivity() {
       renderItems(category);
     });
   });
+
+  function bindMenuCardEvents() {
+    menuGrid.querySelectorAll('.menu-card').forEach(card => {
+      const btn = card.querySelector('.menu-card__detail-btn');
+      const itemId = parseInt(card.getAttribute('data-id'), 10);
+      const openModalHandler = () => openModal(itemId);
+
+      btn.addEventListener('click', openModalHandler);
+      card.querySelector('.menu-card__img-container').addEventListener('click', openModalHandler);
+    });
+  }
 
   // Render items based on category
   function renderItems(category) {
@@ -84,42 +127,8 @@ function initMenuInteractivity() {
       return;
     }
 
-    menuGrid.innerHTML = filteredData.map((item, index) => {
-      // Formatter for price
-      const formattedPrice = item.price.toLocaleString();
-      const tagHtml = item.tag ? `<span class="menu-card__tag">${item.tag}</span>` : '';
-      const loadingAttr = index < 8 ? 'eager' : 'lazy';
-      const fetchPriority = index < 4 ? ' fetchpriority="high"' : '';
-      
-      return `
-        <div class="menu-card gold-frame is-visible" data-id="${item.id}">
-          <div class="menu-card__img-container">
-            <img src="${item.image}" alt="${item.name}" class="menu-card__img" loading="${loadingAttr}" decoding="async"${fetchPriority} />
-            ${tagHtml}
-          </div>
-          <div class="menu-card__info">
-            <div class="menu-card__header">
-              <span class="menu-card__cat text-en">${item.category.toUpperCase()}</span>
-              <span class="menu-card__price">${formattedPrice}원</span>
-            </div>
-            <h3 class="menu-card__title">${item.name}</h3>
-            <p class="menu-card__desc">${item.description}</p>
-            <button class="menu-card__detail-btn">상세 정보 & 알레르기</button>
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    // Re-bind click events on menu card detail buttons
-    menuGrid.querySelectorAll('.menu-card').forEach(card => {
-      const btn = card.querySelector('.menu-card__detail-btn');
-      const itemId = parseInt(card.getAttribute('data-id'));
-      
-      const openModalHandler = () => openModal(itemId);
-      
-      btn.addEventListener('click', openModalHandler);
-      card.querySelector('.menu-card__img-container').addEventListener('click', openModalHandler);
-    });
+    menuGrid.innerHTML = renderMenuCardsHTML(filteredData);
+    bindMenuCardEvents();
   }
 
   // Open detail modal
@@ -130,7 +139,7 @@ function initMenuInteractivity() {
     modalBody.innerHTML = `
       <div class="modal-detail">
         <div class="modal-detail__image">
-          <img src="${item.image}" alt="${item.name}" loading="lazy" />
+          <img src="${item.image}" alt="${item.name}" loading="eager" decoding="async" />
         </div>
         <div class="modal-detail__info">
           <span class="modal-detail__category text-en">${item.category.toUpperCase()}</span>
@@ -171,3 +180,10 @@ function initMenuInteractivity() {
   modalClose.addEventListener('click', closeModal);
   modalBackdrop.addEventListener('click', closeModal);
 }
+
+// Initialize when menu page is loaded via SPA router
+window.addEventListener('pageLoaded', e => {
+  if (e.detail.path === '/menu') {
+    initMenuInteractivity();
+  }
+});
