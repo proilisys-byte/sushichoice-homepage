@@ -22,7 +22,7 @@ import sigSalmon from '../assets/images/signature/sig-salmon.jpg';
 import sigTunaLeft from '../assets/images/signature/sig-tuna-left.jpg';
 import sigTunaRight from '../assets/images/signature/sig-tuna-right.jpg';
 import sigShrimp from '../assets/images/signature/sig-shrimp.jpg';
-import sigWagyu from '../assets/images/signature/sig-wagyu.jpg';
+import sigSet3 from '../assets/images/signature/sig-set3.png';
 import sigSeasonal from '../assets/images/signature/sig-seasonal.jpg';
 
 import franchiseBg from '../assets/images/franchise/franchise-bg.jpg';
@@ -242,14 +242,14 @@ export async function renderHome() {
           </div>
         </div>
 
-        <!-- Parallax slide 4: Wagyu -->
-        <div class="sig-slide" style="background-image: linear-gradient(rgba(11, 11, 11, 0.65), rgba(11, 11, 11, 0.65)), url(${sigWagyu});">
+        <!-- Parallax slide 4: Special Set -->
+        <div class="sig-slide" style="background-image: linear-gradient(rgba(11, 11, 11, 0.65), rgba(11, 11, 11, 0.65)), url(${sigSet3});">
           <div class="sig-slide__content container reveal">
             <span class="sig-slide__num text-en">COLLECTION 04</span>
-            <h2>Wagyu & Special</h2>
+            <h2>Special set</h2>
             <p class="sig-slide__tagline">"레일 위에서 펼쳐지는 블랙 라벨 마블링의 정수"</p>
             <p class="sig-slide__desc">A5 최고 등급 와규를 토치로 즉각 요리한 스테이크 스시와 고소하게 양념된 수제 육회 군함말이 등 육고기 매니아를 감동시키는 프레스티지 스시.</p>
-            <a href="/menu" class="btn btn--secondary" data-link>와규 컬렉션 보기</a>
+            <a href="/menu" class="btn btn--secondary" data-link>스페셜 세트 보기</a>
           </div>
         </div>
 
@@ -381,10 +381,6 @@ export async function renderHome() {
                 `;
   }).join('')}
             </div>
-          </div>
-
-          <div class="text-center reveal" style="margin-top: var(--space-2xl);">
-            <a href="/review" class="btn btn--secondary" data-link>더 많은 리뷰 보기</a>
           </div>
         </div>
       </section>

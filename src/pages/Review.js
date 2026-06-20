@@ -38,15 +38,6 @@ export async function renderReview() {
             </div>
           </div>
 
-          <!-- Filter Navigation -->
-          <div class="review-filters reveal">
-            <button class="review-filter-btn active" data-category="all">전체</button>
-            <button class="review-filter-btn" data-category="family">가족외식</button>
-            <button class="review-filter-btn" data-category="couple">연인데이트</button>
-            <button class="review-filter-btn" data-category="solo">편안한혼밥</button>
-            <button class="review-filter-btn" data-category="kids">아이와함께</button>
-          </div>
-
           <!-- Reviews Gallery Grid -->
           <div class="reviews-grid reveal" id="reviews-grid">
             <!-- Dynamically populated -->
@@ -69,44 +60,20 @@ export async function renderReview() {
 
 function initReviewInteractivity() {
   const grid = document.querySelector('#reviews-grid');
-  const filters = document.querySelectorAll('.review-filter-btn');
 
-  renderReviews('all');
-
-  filters.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filters.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const category = btn.getAttribute('data-category');
-      renderReviews(category);
-    });
-  });
-
-  function renderReviews(category) {
-    let filtered = reviewData;
-    if (category !== 'all') {
-      filtered = reviewData.filter(rev => rev.category === category);
+  grid.innerHTML = reviewData.map(rev => {
+    const starsHtml = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
+    let sourceName = 'Naver';
+    let sourceClass = 'source-naver';
+    if (rev.source === 'instagram') {
+      sourceName = 'Instagram';
+      sourceClass = 'source-insta';
+    } else if (rev.source === 'blog') {
+      sourceName = 'Naver Blog';
+      sourceClass = 'source-blog';
     }
 
-    if (filtered.length === 0) {
-      grid.innerHTML = `<div class="menu-empty">선택하신 태그의 후기를 준비 중입니다.</div>`;
-      return;
-    }
-
-    grid.innerHTML = filtered.map(rev => {
-      const starsHtml = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
-      let sourceName = 'Naver';
-      let sourceClass = 'source-naver';
-      if (rev.source === 'instagram') {
-        sourceName = 'Instagram';
-        sourceClass = 'source-insta';
-      } else if (rev.source === 'blog') {
-        sourceName = 'Naver Blog';
-        sourceClass = 'source-blog';
-      }
-
-      return `
+    return `
         <div class="review-gallery-card gold-frame reveal">
           <div class="rev-card-header">
             <div class="rev-author-info">
@@ -120,6 +87,5 @@ function initReviewInteractivity() {
           <p class="rev-text">"${rev.text}"</p>
         </div>
       `;
-    }).join('');
-  }
+  }).join('');
 }
