@@ -13,86 +13,154 @@ OUTPUT_DIR = ROOT / "src" / "assets" / "images" / "menu"
 
 CANVAS_SIZE = (640, 480)
 CANVAS_BG = (217, 214, 208)
-FOOD_FILL = 0.68
-
-ITEMS = [
-    ("dessert_macaron.webp", "마카롱", "top", 0.66, 14),
-    ("dessert_chocolate_cake.webp", "초코케익", "top", 0.66, 14),
-    ("dessert_fruit_pudding.webp", "과일푸딩", "top", 0.66, 14),
-    ("dessert_pineapple.webp", "파인애플", "bottom", 0.74, 20),
-    ("dessert_orange.webp", "오렌지", "bottom", 0.74, 14),
-    ("dessert_melon.webp", "매론", "bottom", 0.74, 14),
-    ("dessert_mini_udon.webp", "미니우동", "bottom", 0.77, 14),
-    ("dessert_mini_soba.webp", "미니냉모밀", "bottom", 0.77, 14),
-]
-
+FOOD_FILL = 0.90
 TARGET_ASPECT = 4 / 3
 
-BOXES = [
-    (879, 95, 1249, 305),
-    (1275, 95, 1670, 305),
-    (1672, 95, 2041, 305),
-    (80, 307, 478, 565),
-    (483, 307, 866, 565),
-    (867, 307, 1261, 565),
-    (1262, 307, 1657, 565),
-    (1658, 307, 2041, 565),
+ITEMS = [
+    ("dessert_macaron.webp", "마카롱", 12, 52),
+    ("dessert_chocolate_cake.webp", "초코케익", 12, 54),
+    ("dessert_fruit_pudding.webp", "과일푸딩", 12, 54),
+    ("dessert_pineapple.webp", "파인애플", 28, 34),
+    ("dessert_orange.webp", "오렌지", 28, 36),
+    ("dessert_melon.webp", "매론", 28, 36),
+    ("dessert_mini_udon.webp", "미니우동", 28, 38),
+    ("dessert_mini_soba.webp", "미니냉모밀", 28, 36),
 ]
 
-def trim_border(crop: Image.Image, inset: int = 14) -> Image.Image:
+BOXES = [
+    (875, 64, 1253, 298),
+    (1271, 64, 1674, 298),
+    (1668, 64, 2045, 298),
+    (80, 288, 478, 558),
+    (483, 288, 866, 558),
+    (867, 288, 1261, 558),
+    (1262, 288, 1657, 558),
+    (1658, 288, 2041, 558),
+]
+
+
+def trim_border(crop: Image.Image, inset: int) -> Image.Image:
     w, h = crop.size
-    if w <= inset * 2 + 10 or h <= inset * 2 + 10:
+    if w <= inset * 2 + 12 or h <= inset * 2 + 12:
         return crop
     return crop.crop((inset, inset, w - inset, h - inset))
 
 
-def remove_label_band(crop: Image.Image, keep_ratio: float) -> Image.Image:
+def trim_white_tail(crop: Image.Image) -> Image.Image:
+    gray = np.array(crop.convert("RGB")).mean(axis=2)
+    h, w = gray.shape
+    cut = h
+    streak = 0
+
+    for y in range(h - 1, -1, -1):
+        if gray[y].mean() > 248:
+            streak += 1
+            cut = y
+        elif streak >= 2:
+            break
+        else:
+            streak = 0
+
+    if cut < h:
+        return crop.crop((0, 0, w, cut))
+    return crop
+
+
+def trim_label_band(crop: Image.Image, label_cut: int) -> Image.Image:
+    crop = trim_white_tail(crop)
     w, h = crop.size
-    keep_h = max(1, int(h * keep_ratio))
+    keep_h = max(1, h - label_cut)
     return crop.crop((0, 0, w, keep_h))
 
 
-def trim_horizontal_margins(crop: Image.Image) -> Image.Image:
-    """Remove empty side margins while keeping full food height."""
-    arr = np.array(crop.convert("RGB"))
-    h, w, _ = arr.shape
-    r = arr[..., 0].astype(np.float32)
-    g = arr[..., 1].astype(np.float32)
-    b = arr[..., 2].astype(np.float32)
-    white_dist = np.sqrt((255 - r) ** 2 + (255 - g) ** 2 + (255 - b) ** 2)
-    col_has_content = (white_dist > 22).any(axis=0)
+def strip_outer_black_rim(crop: Image.Image, max_depth: int = 20) -> Image.Image:
+    gray = np.array(crop.convert("L"))
+    top, left, bottom, right = 0, 0, gray.shape[0], gray.shape[1]
 
-    xs = np.where(col_has_content)[0]
-    if len(xs) == 0:
-        return crop
+    for _ in range(max_depth):
+        ring = np.concatenate(
+            [
+                gray[top, left:right],
+                gray[bottom - 1, left:right],
+                gray[top:bottom, left],
+                gray[top:bottom, right - 1],
+            ]
+        )
+        if ring.size == 0:
+            break
+        if (ring < 35).mean() > 0.22 and ring.mean() < 90:
+            if top + 2 < bottom:
+                top += 1
+            if bottom - 2 > top:
+                bottom -= 1
+            if left + 2 < right:
+                left += 1
+            if right - 2 > left:
+                right -= 1
+        else:
+            break
 
-    pad = max(8, int(w * 0.03))
-    left = max(0, int(xs.min()) - pad)
-    right = min(w, int(xs.max()) + pad + 1)
+    return crop.crop((left, top, right, bottom))
+
+
+def strip_pure_black_columns(crop: Image.Image) -> Image.Image:
+    gray = np.array(crop.convert("L"))
+    h, w = gray.shape
+    left, right = 0, w
+
+    while left < w - 8 and gray[:, left].mean() < 35:
+        left += 1
+    while right > left + 8 and gray[:, right - 1].mean() < 35:
+        right -= 1
+
     return crop.crop((left, 0, right, h))
 
 
+def shave_dark_edges(crop: Image.Image, max_pass: int = 8) -> Image.Image:
+    gray = np.array(crop.convert("L"))
+    top, left, bottom, right = 0, 0, gray.shape[0], gray.shape[1]
+
+    for _ in range(max_pass):
+        edge_means = [
+            gray[top, left:right].mean(),
+            gray[bottom - 1, left:right].mean(),
+            gray[top:bottom, left].mean(),
+            gray[top:bottom, right - 1].mean(),
+        ]
+        if min(edge_means) > 58:
+            break
+        if edge_means[0] < 58:
+            top += 1
+        if edge_means[1] < 58:
+            bottom -= 1
+        if edge_means[2] < 58:
+            left += 1
+        if edge_means[3] < 58:
+            right -= 1
+
+    return crop.crop((left, top, right, bottom))
+
+
 def pad_to_aspect(crop: Image.Image) -> Image.Image:
-    """Pad (not crop) to 4:3 so the full dish stays visible."""
     w, h = crop.size
     current = w / h
 
-    if abs(current - TARGET_ASPECT) < 0.04:
+    if abs(current - TARGET_ASPECT) < 0.03:
         return crop
 
     if current > TARGET_ASPECT:
-        new_h = max(h, int(w / TARGET_ASPECT))
+        new_h = int(w / TARGET_ASPECT)
         canvas = Image.new("RGB", (w, new_h), CANVAS_BG)
         canvas.paste(crop, (0, (new_h - h) // 2))
         return canvas
 
-    new_w = max(w, int(h * TARGET_ASPECT))
+    new_w = int(h * TARGET_ASPECT)
     canvas = Image.new("RGB", (new_w, h), CANVAS_BG)
     canvas.paste(crop, ((new_w - w) // 2, 0))
     return canvas
 
 
-def reframe_on_canvas(crop: Image.Image) -> Image.Image:
+def fit_on_canvas(crop: Image.Image) -> Image.Image:
     canvas = Image.new("RGB", CANVAS_SIZE, CANVAS_BG)
     fw, fh = crop.size
     max_w = int(CANVAS_SIZE[0] * FOOD_FILL)
@@ -107,20 +175,23 @@ def reframe_on_canvas(crop: Image.Image) -> Image.Image:
     return canvas
 
 
-def process_card(crop: Image.Image, keep_ratio: float) -> Image.Image:
-    no_label = remove_label_band(crop, keep_ratio)
-    trimmed = trim_horizontal_margins(no_label)
-    framed = pad_to_aspect(trimmed)
-    return reframe_on_canvas(framed)
+def process_card(crop: Image.Image, border_inset: int, label_cut: int) -> Image.Image:
+    framed = trim_border(crop, border_inset)
+    no_label = trim_label_band(framed, label_cut)
+    cleaned = strip_outer_black_rim(no_label)
+    cleaned = strip_pure_black_columns(cleaned)
+    cleaned = shave_dark_edges(cleaned)
+    squared = pad_to_aspect(cleaned)
+    return fit_on_canvas(squared)
 
 
 def main() -> None:
     img = Image.open(SOURCE).convert("RGB")
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    for (filename, label, _row, keep_ratio, border_inset), box in zip(ITEMS, BOXES, strict=True):
-        card = trim_border(img.crop(box), border_inset)
-        final = process_card(card, keep_ratio)
+    for (filename, label, border_inset, label_cut), box in zip(ITEMS, BOXES, strict=True):
+        card = img.crop(box)
+        final = process_card(card, border_inset, label_cut)
         out_path = OUTPUT_DIR / filename
         final.save(out_path, format="WEBP", quality=88, method=6)
         print(f"Saved {label} -> {out_path.name} ({final.size[0]}x{final.size[1]})")
