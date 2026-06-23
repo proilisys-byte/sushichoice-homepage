@@ -58,6 +58,7 @@ export async function renderMenu() {
             <button class="menu-filter-btn" data-category="grilled">직화구이</button>
             <button class="menu-filter-btn" data-category="roll">롤</button>
             <button class="menu-filter-btn" data-category="fried">튀김류</button>
+            <button class="menu-filter-btn" data-category="dessert">디저트 · 과일류</button>
           </div>
 
           <!-- Menu Grid (rendered immediately so images start loading with the page HTML) -->

@@ -72,6 +72,16 @@ import friedCrabLegsImg from '../assets/images/menu/fried_crab_legs.webp';
 import friedChickenWingImg from '../assets/images/menu/fried_chicken_wing.webp';
 import menboshaImg from '../assets/images/menu/menbosha.webp';
 
+// ─── 디저트 · 과일류 (Dessert & Fruit) ───
+import dessertMacaronImg from '../assets/images/menu/dessert_macaron.webp';
+import dessertChocolateCakeImg from '../assets/images/menu/dessert_chocolate_cake.webp';
+import dessertFruitPuddingImg from '../assets/images/menu/dessert_fruit_pudding.webp';
+import dessertPineappleImg from '../assets/images/menu/dessert_pineapple.webp';
+import dessertOrangeImg from '../assets/images/menu/dessert_orange.webp';
+import dessertMelonImg from '../assets/images/menu/dessert_melon.webp';
+import dessertMiniUdonImg from '../assets/images/menu/dessert_mini_udon.webp';
+import dessertMiniSobaImg from '../assets/images/menu/dessert_mini_soba.webp';
+
 export const menuData = [
   // ═══════════════════════════════════════════
   // 0. 특초밥 (SPECIAL · 2접시 가격 4,000원)
@@ -801,6 +811,106 @@ export const menuData = [
     description: '식빵 사이에 다진 새우살을 넣고 바삭하게 튀겨내 겉은 바삭하고 속은 촉촉한 새우 토스트.',
     allergens: '갑각류, 밀, 계란',
     image: menboshaImg,
+    isSignature: false,
+    tag: ''
+  },
+
+  // ═══════════════════════════════════════════
+  // 6. 디저트 · 과일류 (DESSERT & FRUIT)
+  // ═══════════════════════════════════════════
+  {
+    id: 61,
+    name: '마카롱',
+    englishName: 'Macaron',
+    category: 'dessert',
+    price: 2000,
+    description: '겉은 바삭하고 속은 촉촉한 프랑스식 마카롱. 초콜릿·딸기 등 두 가지 맛을 골라 즐기는 달콤한 디저트.',
+    allergens: '밀, 계란, 우유, 아몬드',
+    image: dessertMacaronImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 62,
+    name: '초코케익',
+    englishName: 'Chocolate Cake',
+    category: 'dessert',
+    price: 2000,
+    description: '진한 초콜릿 시트와 크림, 초코 슈가를 올린 달콤하고 진한 풍미의 미니 케이크.',
+    allergens: '밀, 계란, 우유',
+    image: dessertChocolateCakeImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 63,
+    name: '과일푸딩',
+    englishName: 'Fruit Jelly Pudding',
+    category: 'dessert',
+    price: 2000,
+    description: '과일 맛이 은은하게 느껴지는 반투명 젤리 푸딩. 상큼하고 가볍게 마무리하기 좋은 디저트.',
+    allergens: '없음',
+    image: dessertFruitPuddingImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 64,
+    name: '파인애플',
+    englishName: 'Fresh Pineapple',
+    category: 'dessert',
+    price: 2000,
+    description: '달콤하고 상큼한 제철 파인애플을 한입 크기로 손질해 신선하게 제공하는 과일 디저트.',
+    allergens: '없음',
+    image: dessertPineappleImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 65,
+    name: '오렌지',
+    englishName: 'Fresh Orange',
+    category: 'dessert',
+    price: 2000,
+    description: '껍질째 손질한 오렌지를 조각 내어 상큼한 과즙과 향을 그대로 즐기는 신선 과일.',
+    allergens: '없음',
+    image: dessertOrangeImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 66,
+    name: '매론',
+    englishName: 'Melon',
+    category: 'dessert',
+    price: 2000,
+    description: '달큰하고 수분 가득한 멜론을 한입 크기로 손질해 깔끔하게 즐기는 제철 과일 디저트.',
+    allergens: '없음',
+    image: dessertMelonImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 67,
+    name: '미니우동',
+    englishName: 'Mini Udon',
+    category: 'dessert',
+    price: 2000,
+    description: '따뜻한 국물에 쫄깃한 우동면과 김·파를 올린 소형 우동. 든든하게 마무리하기 좋은 사이드 메뉴.',
+    allergens: '밀, 대두',
+    image: dessertMiniUdonImg,
+    isSignature: false,
+    tag: ''
+  },
+  {
+    id: 68,
+    name: '미니냉모밀',
+    englishName: 'Mini Cold Soba',
+    category: 'dessert',
+    price: 2000,
+    description: '시원한 육수에 메밀면과 무채·파를 올린 소형 냉모밀. 초밥과 함께 상큼하게 즐기는 여름 별미.',
+    allergens: '밀, 대두',
+    image: dessertMiniSobaImg,
     isSignature: false,
     tag: ''
   }
