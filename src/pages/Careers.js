@@ -2,6 +2,88 @@
 
 import careersBg from '../assets/images/careers/careers-bg.jpg';
 
+/** Set to true when the online application form should be shown again. */
+const SHOW_APPLY_FORM = false;
+const RECRUITER_TEL = '010-3307-7509';
+
+function renderJobAction(position) {
+  if (SHOW_APPLY_FORM) {
+    return `<button type="button" class="btn btn--secondary apply-trigger-btn" data-position="${position}">지원하기</button>`;
+  }
+
+  return `<a href="tel:${RECRUITER_TEL}" class="btn btn--secondary">전화 문의</a>`;
+}
+
+function renderApplySection() {
+  if (!SHOW_APPLY_FORM) {
+    return '';
+  }
+
+  return `
+      <!-- Application Form Section -->
+      <section class="section section--dark" id="apply-section">
+        <div class="container container--narrow">
+          <div class="section-header text-center reveal">
+            <span class="section-label">APPLY NOW</span>
+            <h2 class="section-title">온라인 입사지원서</h2>
+            <p class="section-subtitle">스시초이스와 함께 성장할 열정적인 당신의 지원을 기다립니다.</p>
+            <div class="divider-gold divider-gold--center"></div>
+          </div>
+
+          <form class="careers-apply-form reveal gold-frame" id="careers-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="apply-name">지원자 성함 *</label>
+                <input type="text" id="apply-name" required placeholder="성함을 입력하세요" />
+              </div>
+              <div class="form-group">
+                <label for="apply-tel">연락처 *</label>
+                <input type="tel" id="apply-tel" required placeholder="010-0000-0000" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="apply-position">지원 분야 *</label>
+                <select id="apply-position" required>
+                  <option value="">선택하세요</option>
+                  <option value="매장 매니저">매장 매니저 / 점장 후보</option>
+                  <option value="일식 조리사">초밥 전문 일식 조리사 (셰프)</option>
+                  <option value="홀 서비스 주임">홀 서비스 및 안내 주임</option>
+                  <option value="파트타이머">홀 및 주방보조 파트타이머</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="apply-store">근무 희망 매장 *</label>
+                <select id="apply-store" required>
+                  <option value="">선택하세요</option>
+                  <option value="송내본점">송내본점 (부천 원미구)</option>
+                  <option value="시흥은계점">시흥은계점 (시흥 은행동)</option>
+                  <option value="송도점">송도점 (인천 연수구)</option>
+                  <option value="인천서구점">인천서구점 (인천 서구)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="apply-cv">이력서 및 자기소개서 첨부 *</label>
+              <div class="file-upload-wrapper">
+                <input type="file" id="apply-cv" required accept=".pdf,.doc,.docx,.jpg,.png" />
+                <span class="file-upload-desc">PDF, Word, 이미지 파일 첨부 가능 (최대 10MB)</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="apply-intro">한줄 자기소개</label>
+              <textarea id="apply-intro" rows="4" placeholder="자신만의 장점 또는 관련 직무 경험이 있다면 간략하게 기술해주세요."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--large" style="width: 100%; justify-content: center; margin-top: var(--space-md);">입사 지원 서류 접수하기</button>
+          </form>
+        </div>
+      </section>`;
+}
+
 export async function renderCareers() {
   setTimeout(() => {
     initCareersInteractivity();
@@ -73,10 +155,10 @@ export async function renderCareers() {
                 <p class="job-card__summary">매장 운영 전반 총괄, 매출 분석, 홀 직원 스케줄 관리 및 고객 응대 서비스 지휘</p>
                 <div class="job-card__details">
                   <span>📍 전 지점 채용 진행 관련 문의 바랍니다.</span>
-                  <span>📞 담당자: 010-3307-7509</span>
+                  <span>📞 담당자: ${RECRUITER_TEL}</span>
                 </div>
               </div>
-              <button class="btn btn--secondary apply-trigger-btn" data-position="매장 매니저">지원하기</button>
+              ${renderJobAction('매장 매니저')}
             </div>
 
             <!-- Job 2 -->
@@ -87,10 +169,10 @@ export async function renderCareers() {
                 <p class="job-card__summary">활어 오로시 손질, 초밥 샤리 취사 및 조리, 골든 레일 서빙 및 실시간 주문 조리</p>
                 <div class="job-card__details">
                   <span>📍 전 지점 채용 진행 관련 문의 바랍니다.</span>
-                  <span>📞 담당자: 010-3307-7509</span>
+                  <span>📞 담당자: ${RECRUITER_TEL}</span>
                 </div>
               </div>
-              <button class="btn btn--secondary apply-trigger-btn" data-position="일식 조리사">지원하기</button>
+              ${renderJobAction('일식 조리사')}
             </div>
 
             <!-- Job 3 -->
@@ -101,10 +183,10 @@ export async function renderCareers() {
                 <p class="job-card__summary">테이블 부스 안내, 장국 및 밑반찬 세팅, 무인 태블릿 주문 지원 및 매장 청결 관리</p>
                 <div class="job-card__details">
                   <span>📍 전 지점 채용 진행 관련 문의 바랍니다.</span>
-                  <span>📞 담당자: 010-3307-7509</span>
+                  <span>📞 담당자: ${RECRUITER_TEL}</span>
                 </div>
               </div>
-              <button class="btn btn--secondary apply-trigger-btn" data-position="홀 서비스 주임">지원하기</button>
+              ${renderJobAction('홀 서비스 주임')}
             </div>
 
             <!-- Job 4 -->
@@ -115,77 +197,16 @@ export async function renderCareers() {
                 <p class="job-card__summary">요일/시간제 선택 가능. 설거지 및 조리 보조, 테이블 정리 및 식기 세척 관리</p>
                 <div class="job-card__details">
                   <span>📍 전 지점 상시 모집</span>
-                  <span>📞 담당자: 010-3307-7509</span>
+                  <span>📞 담당자: ${RECRUITER_TEL}</span>
                 </div>
               </div>
-              <button class="btn btn--secondary apply-trigger-btn" data-position="파트타이머">지원하기</button>
+              ${renderJobAction('파트타이머')}
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Application Form Section -->
-      <section class="section section--dark" id="apply-section">
-        <div class="container container--narrow">
-          <div class="section-header text-center reveal">
-            <span class="section-label">APPLY NOW</span>
-            <h2 class="section-title">온라인 입사지원서</h2>
-            <p class="section-subtitle">스시초이스와 함께 성장할 열정적인 당신의 지원을 기다립니다.</p>
-            <div class="divider-gold divider-gold--center"></div>
-          </div>
-
-          <form class="careers-apply-form reveal gold-frame" id="careers-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="apply-name">지원자 성함 *</label>
-                <input type="text" id="apply-name" required placeholder="성함을 입력하세요" />
-              </div>
-              <div class="form-group">
-                <label for="apply-tel">연락처 *</label>
-                <input type="tel" id="apply-tel" required placeholder="010-0000-0000" />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="apply-position">지원 분야 *</label>
-                <select id="apply-position" required>
-                  <option value="">선택하세요</option>
-                  <option value="매장 매니저">매장 매니저 / 점장 후보</option>
-                  <option value="일식 조리사">초밥 전문 일식 조리사 (셰프)</option>
-                  <option value="홀 서비스 주임">홀 서비스 및 안내 주임</option>
-                  <option value="파트타이머">홀 및 주방보조 파트타이머</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="apply-store">근무 희망 매장 *</label>
-                <select id="apply-store" required>
-                  <option value="">선택하세요</option>
-                  <option value="송내본점">송내본점 (부천 원미구)</option>
-                  <option value="시흥은계점">시흥은계점 (시흥 은행동)</option>
-                  <option value="송도점">송도점 (인천 연수구)</option>
-                  <option value="인천서구점">인천서구점 (인천 서구)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="apply-cv">이력서 및 자기소개서 첨부 *</label>
-              <div class="file-upload-wrapper">
-                <input type="file" id="apply-cv" required accept=".pdf,.doc,.docx,.jpg,.png" />
-                <span class="file-upload-desc">PDF, Word, 이미지 파일 첨부 가능 (최대 10MB)</span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="apply-intro">한줄 자기소개</label>
-              <textarea id="apply-intro" rows="4" placeholder="자신만의 장점 또는 관련 직무 경험이 있다면 간략하게 기술해주세요."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn--primary btn--large" style="width: 100%; justify-content: center; margin-top: var(--space-md);">입사 지원 서류 접수하기</button>
-          </form>
-        </div>
-      </section>
+      ${renderApplySection()}
     </main>
   `;
 }
@@ -207,6 +228,10 @@ function initCareersInteractivity() {
       e.preventDefault();
       scrollToSection(jobsSection);
     });
+  }
+
+  if (!SHOW_APPLY_FORM) {
+    return;
   }
 
   const triggerBtns = document.querySelectorAll('.apply-trigger-btn');
