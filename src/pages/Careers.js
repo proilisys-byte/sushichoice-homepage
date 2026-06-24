@@ -16,7 +16,7 @@ export async function renderCareers() {
           <h1 class="careers-hero__title">좋은 회전초밥은<br/>좋은 사람으로부터 시작됩니다.</h1>
           <p class="careers-hero__desc">장인의 신념을 공유하고 고객과 따뜻한 소통을 이어갈 스시초이스의 주역을 모집합니다.</p>
           <div class="divider-gold divider-gold--center"></div>
-          <a href="#jobs-section" class="btn btn--primary">진행 중인 채용공고 보기</a>
+          <a href="#jobs-section" id="jobs-cta" class="btn btn--primary">진행 중인 채용공고 보기</a>
         </div>
       </section>
 
@@ -190,7 +190,25 @@ export async function renderCareers() {
   `;
 }
 
+function scrollToSection(section) {
+  if (!section) return;
+
+  const headerH =
+    parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10) || 80;
+  const top = section.getBoundingClientRect().top + window.pageYOffset - headerH - 16;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
 function initCareersInteractivity() {
+  const jobsCta = document.querySelector('#jobs-cta');
+  const jobsSection = document.querySelector('#jobs-section');
+  if (jobsCta && jobsSection) {
+    jobsCta.addEventListener('click', e => {
+      e.preventDefault();
+      scrollToSection(jobsSection);
+    });
+  }
+
   const triggerBtns = document.querySelectorAll('.apply-trigger-btn');
   const positionSelect = document.querySelector('#apply-position');
   const applySection = document.querySelector('#apply-section');
@@ -201,9 +219,7 @@ function initCareersInteractivity() {
       if (positionSelect) {
         positionSelect.value = position;
       }
-      if (applySection) {
-        applySection.scrollIntoView({ behavior: 'smooth' });
-      }
+      scrollToSection(applySection);
     });
   });
 

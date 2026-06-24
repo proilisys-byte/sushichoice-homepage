@@ -75,8 +75,10 @@ async function handleRouting(path = window.location.pathname) {
     window.updateSEO(lookupPath);
   }
 
-  // Scroll to top
-  window.scrollTo(0, 0);
+  // Scroll to top, or to a hash target when the URL includes one (e.g. /careers#jobs-section)
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
 
   if (lookupPath === '/') {
     initSettingPopup();
@@ -88,10 +90,26 @@ async function handleRouting(path = window.location.pathname) {
   // Initialize Page Interactivity and Scroll Reveal Observers
   setTimeout(() => {
     initializePageInteractivity();
+    if (window.location.hash) {
+      scrollToHashTarget();
+    }
     if (useTransition) {
       transitionOverlay.classList.remove('is-active');
     }
   }, postRenderDelay);
+}
+
+function scrollToHashTarget(behavior = 'auto') {
+  const target = document.querySelector(window.location.hash);
+  if (!target) {
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  const headerH =
+    parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10) || 80;
+  const top = target.getBoundingClientRect().top + window.pageYOffset - headerH - 16;
+  window.scrollTo({ top, behavior });
 }
 
 /**
