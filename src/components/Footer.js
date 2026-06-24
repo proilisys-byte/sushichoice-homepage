@@ -80,7 +80,7 @@ export function renderFooter() {
           <p>
             <span>주소: 경기도 부천시 원미구 부일로243번길 52-4</span> | 
             <span>대표번호: 0507-1436-9955</span> | 
-            <span>가맹문의: 1661-8884</span>
+            <span>가맹문의: 010-3307-7509</span>
           </p>
         </div>
         <div class="footer__copyright">

@@ -5,7 +5,10 @@ import { storeData } from '../data/storeData';
 export async function renderStore() {
   // Parse query parameter to determine initial active store
   const urlParams = new URLSearchParams(window.location.search);
-  const initialActiveId = urlParams.get('id') || storeData[0]?.id;
+  const requestedId = urlParams.get('id');
+  const initialActiveId = storeData.some(store => store.id === requestedId)
+    ? requestedId
+    : storeData[0]?.id;
 
   setTimeout(() => {
     initStoreInteractivity();

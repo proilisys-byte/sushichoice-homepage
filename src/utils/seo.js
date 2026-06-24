@@ -3,7 +3,6 @@ import logoImg from '../assets/images/brand/logo.png';
 import songnaeExt from '../assets/images/store/store-songnae-ext.jpg';
 import eungyeExt from '../assets/images/store/store-eungye-ext.jpg';
 import songdoExt from '../assets/images/store/store-songdo-ext.jpg';
-import incheonExt from '../assets/images/store/store-incheon-ext.jpg';
 
 const DEFAULT_TITLE = '스시초이스 | Premium Rotary Sushi Experience';
 const DEFAULT_DESC = '움직이는 예술, 장인의 온도. 대한민국 프리미엄 회전초밥 브랜드 스시초이스(SUSHI CHOICE). 신선한 재료와 15년 경력 장인의 36.5°C 정성을 담은 미식 경험을 제공합니다.';
@@ -84,8 +83,8 @@ const SEO_DATA = {
   },
   '/store': {
     title: '매장 안내 | 스시초이스',
-    desc: '가까운 스시초이스 매장을 찾아보세요. 송내본점, 은계점, 송도점, 인천서구점에서 프리미엄 회전초밥을 만나실 수 있습니다.',
-    keywords: '스시초이스 매장, 송내 스시초이스, 은계 스시초이스, 송도 스시초이스, 인천 스시초이스',
+    desc: '가까운 스시초이스 매장을 찾아보세요. 송내본점, 은계점, 송도점에서 프리미엄 회전초밥을 만나실 수 있습니다.',
+    keywords: '스시초이스 매장, 송내 스시초이스, 은계 스시초이스, 송도 스시초이스',
     schemas: [
       {
         '@context': 'https://schema.org',
@@ -108,12 +107,6 @@ const SEO_DATA = {
             'position': 3,
             'url': 'https://sushichoice.co.kr/store/songdo',
             'name': '스시초이스 송도점'
-          },
-          {
-            '@type': 'ListItem',
-            'position': 4,
-            'url': 'https://sushichoice.co.kr/store/incheon',
-            'name': '스시초이스 인천서구점'
           }
         ]
       }
@@ -190,31 +183,6 @@ const SEO_DATA = {
           'addressCountry': 'KR'
         },
         'hasMap': 'https://map.naver.com/p/search/%EC%8A%A4%EC%8B%9C%EC%B4%88%EC%9D%B4%EC%8A%A4/place/1807470923',
-        'openingHours': 'Mo-Su 11:30-21:30'
-      }
-    ]
-  },
-  '/store/incheon': {
-    title: '인천서구점 | 스시초이스 - 청라 검단 회전초밥 맛집',
-    desc: '스시초이스 인천서구점. 신선하고 대중적인 고품질 스시를 즐길 수 있는 인천 서구 대표 회전초밥 다이닝.',
-    keywords: '인천서구 회전초밥, 인천 서구 초밥 맛집, 검단 회전초밥, 청라 회전초밥 맛집',
-    schemas: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Restaurant',
-        'name': '스시초이스 인천서구점',
-        'image': `https://sushichoice.co.kr${incheonExt}`,
-        'telephone': '032-562-1028',
-        'url': 'https://sushichoice.co.kr/store/incheon',
-        'address': {
-          '@type': 'PostalAddress',
-          'streetAddress': '서구 심곡동 246-8 1층',
-          'addressLocality': '서구',
-          'addressRegion': '인천광역시',
-          'postalCode': '22718',
-          'addressCountry': 'KR'
-        },
-        'hasMap': 'https://map.naver.com/p/search/%EC%8A%A4%EC%8B%9C%EC%B4%88%EC%9D%B4%EC%8A%A4/place/1028288848',
         'openingHours': 'Mo-Su 11:30-21:30'
       }
     ]
@@ -316,8 +284,7 @@ export function updateSEO(rawPath) {
     const storeKeys = {
       'songnae': '/store/songnae',
       'eungye': '/store/eungye',
-      'songdo': '/store/songdo',
-      'incheon': '/store/incheon'
+      'songdo': '/store/songdo'
     };
     if (storeKeys[storeId]) {
       path = storeKeys[storeId];

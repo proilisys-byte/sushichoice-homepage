@@ -15,11 +15,6 @@ import songdoInt from '../assets/images/store/store-songdo-int.jpg';
 import songdoLoc from '../assets/images/store/store-songdo-loc.png';
 import songdoMap from '../assets/images/store/store-songdo-map.jpg';
 
-import incheonExt from '../assets/images/store/store-incheon-ext.jpg';
-import incheonInt from '../assets/images/store/store-incheon-int.jpg';
-import incheonLoc from '../assets/images/store/store-incheon-loc.png';
-import incheonMap from '../assets/images/store/store-incheon-map.jpg';
-
 export const storeData = [
   {
     id: 'songnae',
@@ -69,21 +64,5 @@ export const storeData = [
     imageLoc: songdoLoc,
     imageInt: songdoInt,
     imageMap: songdoMap
-  },
-  {
-    id: 'incheon',
-    name: '인천서구점',
-    englishName: 'Incheon Seogu Store',
-    address: '인천 서구 염곡로498번안길 11 1층 (인천2가정역 4번 출구에서 717m)',
-    tel: '0507-1481-8853',
-    hours: '매일 11:30 - 21:30 (평일 Break 15:00~17:00 / 라스트 오더 21:00)',
-    parking: '매장앞 무료주차',
-    seats: '다찌 14석, 4인 패밀리 테이블 6개 (총 38석)',
-    description: '접시당 균일가 2,000원의 저렴하면서 고퀄리티와 맛을 자랑하는 회전초밥 전문점 스시 초이스 서구점 입니다. 저희는 쉐프들이 오마카세(직접 손으로 쥔 초밥)방식으로 당일 들어온 엄선된 제철의 신선한 재료만을 제공하고 있으며 우리 가족들이 드신다는 마음가짐으로 최선을 다해서 요리해 가족모임이나 연인들의 사랑을 받고 있는 가정동 초밥 맛집 입니다. 오시는 모든분들의 행복하고 즐거운 식사시간을 만들어드리기 위해 최선을 다하겠습니다.',
-    mapUrl: 'https://map.naver.com/p/search/%EC%8A%A4%EC%8B%9C%EC%B4%88%EC%9D%B4%EC%8A%A4/place/1028288848',
-    imageExt: incheonExt,
-    imageLoc: incheonLoc,
-    imageInt: incheonInt,
-    imageMap: incheonMap
   }
 ];

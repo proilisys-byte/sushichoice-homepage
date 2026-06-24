@@ -60,7 +60,6 @@ function renderApplySection() {
                   <option value="송내본점">송내본점 (부천 원미구)</option>
                   <option value="시흥은계점">시흥은계점 (시흥 은행동)</option>
                   <option value="송도점">송도점 (인천 연수구)</option>
-                  <option value="인천서구점">인천서구점 (인천 서구)</option>
                 </select>
               </div>
             </div>
