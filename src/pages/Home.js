@@ -161,7 +161,7 @@ export async function renderHome() {
             <div class="why-card gold-frame">
               <span class="why-card__num text-en">04</span>
               <h3>Experience<br/>(경험의 즐거움)</h3>
-              <p>레일을 흐르는 시각적 즐거움과 함께, 터치 패드를 통한 즉석 오더 및 셰프들의 친절하고 활력 있는 응대로 입과 눈이 모두 유쾌합니다.</p>
+              <p>레일을 흐르는 시각적 즐거움과 함께 셰프들의 친절하고 활력 있는 응대로 입과 눈이 모두 유쾌합니다.</p>
             </div>
             <!-- Card 5 -->
             <div class="why-card gold-frame">
