@@ -72,7 +72,7 @@ export async function renderCareers() {
                 <h3>매장 매니저 / 점장 후보</h3>
                 <p class="job-card__summary">매장 운영 전반 총괄, 매출 분석, 홀 직원 스케줄 관리 및 고객 응대 서비스 지휘</p>
                 <div class="job-card__details">
-                  <span>📍 전 지점 채용 진행 문의 바랍니다.</span>
+                  <span>📍 전 지점 채용 진행 관련 문의 바랍니다.</span>
                   <span>📞 담당자: 010-3307-7509</span>
                 </div>
               </div>
@@ -86,7 +86,7 @@ export async function renderCareers() {
                 <h3>초밥 전문 일식 조리사 (셰프)</h3>
                 <p class="job-card__summary">활어 오로시 손질, 초밥 샤리 취사 및 조리, 골든 레일 서빙 및 실시간 주문 조리</p>
                 <div class="job-card__details">
-                  <span>📍 송내본점 / 송도점</span>
+                  <span>📍 전 지점 채용 진행 관련 문의 바랍니다.</span>
                   <span>📞 담당자: 010-3307-7509</span>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export async function renderCareers() {
                 <h3>홀 서비스 및 안내 주임</h3>
                 <p class="job-card__summary">테이블 부스 안내, 장국 및 밑반찬 세팅, 무인 태블릿 주문 지원 및 매장 청결 관리</p>
                 <div class="job-card__details">
-                  <span>📍 시흥은계점 / 인천서구점</span>
+                  <span>📍 전 지점 채용 진행 관련 문의 바랍니다.</span>
                   <span>📞 담당자: 010-3307-7509</span>
                 </div>
               </div>
