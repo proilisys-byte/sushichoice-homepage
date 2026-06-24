@@ -2,6 +2,82 @@
 
 import franchiseBg from '../assets/images/franchise/franchise-bg.jpg';
 
+/** Set to true when the online inquiry form should be shown again. */
+const SHOW_INQUIRY_FORM = false;
+/** Matches footer "가맹문의" line — update both if this number changes. */
+const FRANCHISE_CONSULT_TEL = '1661-8884';
+
+function renderInquirySection() {
+  const subtitle = SHOW_INQUIRY_FORM
+    ? '문의사항을 성실하게 작성해주시면, 전담 지점 창업 설계사가 개설 희망 지역 확인후 연락드리겠습니다.'
+    : '가맹 전용 상담 번호로 전화 주시면, 전담 창업 설계사가 개설 희망 지역을 확인한 뒤 연락드리겠습니다.';
+
+  const body = SHOW_INQUIRY_FORM
+    ? `
+          <form class="franchise-inquiry-form reveal gold-frame" id="franchise-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fran-name">신청자 성함 *</label>
+                <input type="text" id="fran-name" required placeholder="성함을 입력하세요" />
+              </div>
+              <div class="form-group">
+                <label for="fran-tel">연락처 *</label>
+                <input type="tel" id="fran-tel" required placeholder="010-0000-0000" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fran-area">창업 희망 지역 *</label>
+                <input type="text" id="fran-area" required placeholder="예: 경기도 부천시 상동, 인천 송도 등" />
+              </div>
+              <div class="form-group">
+                <label for="fran-budget">예상 창업 예산 *</label>
+                <select id="fran-budget" required>
+                  <option value="">선택하세요</option>
+                  <option value="under-1">1억 원 미만 (리모델링형)</option>
+                  <option value="1-1.5">1억 원 ~ 1억 5천만 원</option>
+                  <option value="1.5-2">1억 5천만 원 ~ 2억 원</option>
+                  <option value="over-2">2억 원 이상 (대형 매장 신규)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="fran-msg">상세 문의 내용</label>
+              <textarea id="fran-msg" rows="4" placeholder="창업 경험 여부 또는 보유 중이신 상가 점포 평수 등 추가적인 상황을 적어주시면 상세 상담에 매우 큰 도움이 됩니다."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--large" style="width: 100%; justify-content: center; margin-top: var(--space-md);">가맹 창업 신청 상담 접수</button>
+          </form>`
+    : `
+          <div class="inquiry-contact reveal gold-frame">
+            <div class="inquiry-contact__icon" aria-hidden="true">📞</div>
+            <p class="inquiry-contact__label">가맹 창업 전용 상담</p>
+            <a href="tel:${FRANCHISE_CONSULT_TEL}" class="inquiry-contact__tel">${FRANCHISE_CONSULT_TEL}</a>
+            <p class="inquiry-contact__note">창업 희망 지역과 예상 예산을 간단히 말씀해 주시면, 상권 검토 후 영업일 기준 24시간 이내에 연락드립니다.</p>
+            <div class="inquiry-contact__actions">
+              <a href="tel:${FRANCHISE_CONSULT_TEL}" class="btn btn--primary btn--large">전화 상담하기</a>
+              <a href="/contact" class="btn btn--secondary" data-link>문의 접수 센터</a>
+            </div>
+          </div>`;
+
+  return `
+      <!-- Inquiry / Contact Section -->
+      <section class="section section--warm">
+        <div class="container container--narrow">
+          <div class="section-header text-center reveal">
+            <span class="section-label">PARTNERSHIP INQUIRY</span>
+            <h2 class="section-title">가맹 창업 상담 신청</h2>
+            <p class="section-subtitle">${subtitle}</p>
+            <div class="divider-gold divider-gold--center"></div>
+          </div>
+
+          ${body}
+        </div>
+      </section>`;
+}
+
 export async function renderFranchise() {
   setTimeout(() => {
     initFranchiseInteractivity();
@@ -84,7 +160,7 @@ export async function renderFranchise() {
             <div class="process-step">
               <span class="process-step__num">01</span>
               <h4>가맹 상담 신청</h4>
-              <p>온라인 폼 접수 후 24시간 이내에 본사 전담 창업 컨설턴트 유선 배정 및 1차 면담</p>
+              <p>상담 신청 접수 후 24시간 이내에 본사 전담 창업 컨설턴트 유선 배정 및 1차 면담</p>
             </div>
             <div class="process-step">
               <span class="process-step__num">02</span>
@@ -187,54 +263,7 @@ export async function renderFranchise() {
         </div>
       </section>
 
-      <!-- Inquiry Submission Form -->
-      <section class="section section--warm">
-        <div class="container container--narrow">
-          <div class="section-header text-center reveal">
-            <span class="section-label">PARTNERSHIP INQUIRY</span>
-            <h2 class="section-title">가맹 창업 상담 신청</h2>
-            <p class="section-subtitle">문의사항을 성실하게 작성해주시면, 전담 지점 창업 설계사가 개설 희망 지역 확인후 연락드리겠습니다.</p>
-            <div class="divider-gold divider-gold--center"></div>
-          </div>
-
-          <form class="franchise-inquiry-form reveal gold-frame" id="franchise-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fran-name">신청자 성함 *</label>
-                <input type="text" id="fran-name" required placeholder="성함을 입력하세요" />
-              </div>
-              <div class="form-group">
-                <label for="fran-tel">연락처 *</label>
-                <input type="tel" id="fran-tel" required placeholder="010-0000-0000" />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fran-area">창업 희망 지역 *</label>
-                <input type="text" id="fran-area" required placeholder="예: 경기도 부천시 상동, 인천 송도 등" />
-              </div>
-              <div class="form-group">
-                <label for="fran-budget">예상 창업 예산 *</label>
-                <select id="fran-budget" required>
-                  <option value="">선택하세요</option>
-                  <option value="under-1">1억 원 미만 (리모델링형)</option>
-                  <option value="1-1.5">1억 원 ~ 1억 5천만 원</option>
-                  <option value="1.5-2">1억 5천만 원 ~ 2억 원</option>
-                  <option value="over-2">2억 원 이상 (대형 매장 신규)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="fran-msg">상세 문의 내용</label>
-              <textarea id="fran-msg" rows="4" placeholder="창업 경험 여부 또는 보유 중이신 상가 점포 평수 등 추가적인 상황을 적어주시면 상세 상담에 매우 큰 도움이 됩니다."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn--primary btn--large" style="width: 100%; justify-content: center; margin-top: var(--space-md);">가맹 창업 신청 상담 접수</button>
-          </form>
-        </div>
-      </section>
+      ${renderInquirySection()}
     </main>
   `;
 }
@@ -302,6 +331,10 @@ function initFranchiseInteractivity() {
     tableInput.addEventListener('input', calculate);
     spendInput.addEventListener('change', calculate);
     calculate(); // Trigger initially
+  }
+
+  if (!SHOW_INQUIRY_FORM) {
+    return;
   }
 
   // Inquiry form submit

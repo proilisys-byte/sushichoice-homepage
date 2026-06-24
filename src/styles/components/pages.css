@@ -898,6 +898,58 @@
   border: 1px solid var(--color-divider);
 }
 
+.inquiry-contact {
+  background-color: var(--color-card);
+  padding: var(--space-3xl) var(--space-2xl);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-divider);
+  text-align: center;
+}
+
+.inquiry-contact__icon {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-md);
+}
+
+.inquiry-contact__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.inquiry-contact__tel {
+  display: block;
+  font-family: var(--font-en);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: var(--weight-bold);
+  color: var(--color-gold);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-md);
+  transition: opacity var(--transition-base);
+}
+
+.inquiry-contact__tel:hover {
+  opacity: 0.85;
+}
+
+.inquiry-contact__note {
+  max-width: 28rem;
+  margin: 0 auto var(--space-xl);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
+
+.inquiry-contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
