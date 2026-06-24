@@ -937,17 +937,10 @@
 
 .inquiry-contact__note {
   max-width: 28rem;
-  margin: 0 auto var(--space-xl);
+  margin: 0 auto;
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-normal);
-}
-
-.inquiry-contact__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-md);
 }
 
 .form-row {

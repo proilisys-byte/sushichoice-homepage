@@ -4,8 +4,8 @@ import franchiseBg from '../assets/images/franchise/franchise-bg.jpg';
 
 /** Set to true when the online inquiry form should be shown again. */
 const SHOW_INQUIRY_FORM = false;
-/** Matches footer "가맹문의" line — update both if this number changes. */
-const FRANCHISE_CONSULT_TEL = '1661-8884';
+/** Matches careers recruiter line — update both if this number changes. */
+const FRANCHISE_CONSULT_TEL = '010-3307-7509';
 
 function renderInquirySection() {
   const subtitle = SHOW_INQUIRY_FORM
@@ -55,11 +55,7 @@ function renderInquirySection() {
             <div class="inquiry-contact__icon" aria-hidden="true">📞</div>
             <p class="inquiry-contact__label">가맹 창업 전용 상담</p>
             <a href="tel:${FRANCHISE_CONSULT_TEL}" class="inquiry-contact__tel">${FRANCHISE_CONSULT_TEL}</a>
-            <p class="inquiry-contact__note">창업 희망 지역과 예상 예산을 간단히 말씀해 주시면, 상권 검토 후 영업일 기준 24시간 이내에 연락드립니다.</p>
-            <div class="inquiry-contact__actions">
-              <a href="tel:${FRANCHISE_CONSULT_TEL}" class="btn btn--primary btn--large">전화 상담하기</a>
-              <a href="/contact" class="btn btn--secondary" data-link>문의 접수 센터</a>
-            </div>
+            <p class="inquiry-contact__note">가맹 창업 희망시 전화 또는 문자 남겨 주시면 연락 드리겠습니다.</p>
           </div>`;
 
   return `
